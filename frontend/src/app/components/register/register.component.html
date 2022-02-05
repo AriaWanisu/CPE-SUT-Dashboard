@@ -1,0 +1,163 @@
+<div class="hold-transition register-page">
+    <div class="register-box">
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="" class="h1"><b>Admin</b>LTE</a>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Register a new membership</p>
+
+                <form [formGroup]="profileForm">
+
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger"
+                        role="alert">
+                        <div *ngIf="email.errors?.['required']">
+                            โปรดระบุ email
+                        </div>
+                        <div *ngIf="email.errors?.['email']">
+                            โปรดระบุร email ให้ถูกต้อง
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger"
+                        role="alert">
+                        <div *ngIf="password.errors?.['required']">
+                            โปรดระบุพาสเวิร์ด
+                        </div>
+                        <div *ngIf="password.errors?.['minlength']">
+                            โปรดระบุพาสเวิร์ดอย่างน้อย 8 ตัวอักษร
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Retype password"
+                            formControlName="passwordCheck">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-unlock-alt"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="profileForm.value.passwordCheck != profileForm.value.password && (passwordCheck.dirty || passwordCheck.touched)"
+                        class="alert alert-danger" role="alert">
+                        พาสเวิร์ดไม่ตรงกัน
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger"
+                        role="alert">
+                        <div *ngIf="firstName.errors?.['required']">
+                            โปรดระบุชื่อ
+                        </div>
+                    </div>
+
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user-circle"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger"
+                        role="alert">
+                        <div *ngIf="lastName.errors?.['required']">
+                            โปรดระบุนามสกุล
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3" style="font-family: Prompt; margin-left: 3px;">
+                        <label for="">เพศ: </label>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label" style="margin-left: 15px;">
+                                <input class="form-check-input" type="radio" name="sex" value="ชาย"
+                                    formControlName='sex'>ชาย
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="sex" value="หญิง"
+                                    formControlName='sex'>หญิง
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="sex" value="อื่นๆ"
+                                    formControlName='sex'>อื่นๆ
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Phone Number" formControlName="phone">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-phone"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger"
+                        role="alert">
+                        <div *ngIf="phone.errors?.['required']">
+                            โปรดระบุเบอร์โทรศัพท์
+                        </div>
+                        <div *ngIf="phone.errors?.['pattern']">
+                            โปรดระบุเบอร์โทรศัพท์ให้ถูกต้อง
+                        </div>
+                        <div *ngIf="phone.errors?.['maxlength']">
+                            โปรดระบุเบอร์โทรศัพท์ 10 หลัก
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                                <label for="agreeTerms">
+                                    I agree to the <a href="#">terms</a>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit"
+                                [disabled]="profileForm.invalid || profileForm.value.passwordCheck != profileForm.value.password"
+                                class="btn btn-primary btn-block" (click)="signup()">Register</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+                <a href="/login" class="text-center">I already have a membership</a>
+            </div>
+            <!-- /.form-box -->
+        </div><!-- /.card -->
+    </div>
+    <!-- /.register-box -->
+
+</div>

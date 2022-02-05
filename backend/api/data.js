@@ -37,8 +37,8 @@ const getData = () => {
     })
 }
 
-router.route('/data').get(authorization , (req, res) => {
-    console.log("getData")
+
+router.route('/data').get((req, res) => {
     getData().then(result => {
         console.log(result);
         res.status(200).json(result);
