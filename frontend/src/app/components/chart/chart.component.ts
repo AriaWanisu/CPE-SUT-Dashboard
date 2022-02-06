@@ -9,6 +9,7 @@ import { Chart } from 'chart.js';
 })
 export class ChartComponent implements OnInit {
 
+  data: any;
   chart: any;
 
   constructor(private dataser: DataService) { }
@@ -18,7 +19,7 @@ export class ChartComponent implements OnInit {
       let retire = res.map(res => res.retire);
       let entrance = res.map(res => res.entrance);
       let year = res.map(res => res.year);
-     
+      
       this.chart = new Chart('canvas', {
         type: 'bar',
         data: {

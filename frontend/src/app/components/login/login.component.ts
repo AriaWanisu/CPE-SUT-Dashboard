@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  
   check() {
     console.log(this.authForm.value);
   }

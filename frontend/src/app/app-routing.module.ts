@@ -8,9 +8,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ChartComponent } from './components/chart/chart.component';
+import { LoginGuardService } from './services/login-guard.service';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  {path: ' ', redirectTo: '/login'},
+  {path: '' , component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'admin_login', component: AdminLoginComponent},
   {path: 'register', component: RegisterComponent},
@@ -23,6 +25,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [ AuthService, AuthGuardService ]
+  providers: [ AuthService, AuthGuardService, LoginGuardService ]
 })
 export class AppRoutingModule { }

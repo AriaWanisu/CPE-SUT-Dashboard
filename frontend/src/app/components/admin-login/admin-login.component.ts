@@ -16,6 +16,7 @@ export class AdminLoginComponent implements OnInit {
   authForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
+    role: new FormControl('Admin'),
   });
 
   constructor(public local: LocalStorageService, private auth: AuthService, private router: Router) { }

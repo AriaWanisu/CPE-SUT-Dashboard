@@ -41,8 +41,7 @@ const insertUser = (dataUser) => {
             lastName: dataUser.lastName,
             sex: dataUser.sex,
             phone: dataUser.phone,
-            address: dataUser.address,
-            role: "Newbie Tier",
+            role: "Member",
             img: "https://th.bing.com/th/id/OIP.tmgWGdzGFmIwg1iaqCbSvgHaHa?pid=ImgDet&rs=1"
         });
         new_user.save((err, data) => {
