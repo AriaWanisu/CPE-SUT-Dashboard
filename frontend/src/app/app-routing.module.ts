@@ -10,6 +10,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { ChartComponent } from './components/chart/chart.component';
 import { LoginGuardService } from './services/login-guard.service';
 import { HomeComponent } from './components/home/home.component';
+import { GraduatedComponent } from './components/graduated/graduated.component';
 
 const routes: Routes = [
   {path: '' , component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
   {path: '404', component: NotFoundComponent, canActivate: [AuthGuardService]},
   {path: 'chart', component: ChartComponent},
+  {path: 'graduated', component: GraduatedComponent},
   {path: '**', redirectTo: '/login'}
 ];
 

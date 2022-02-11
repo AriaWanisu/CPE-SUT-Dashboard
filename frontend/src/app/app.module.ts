@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DataService  } from './services/data.service';
 import { HomeComponent } from './components/home/home.component';
+import { GraduatedComponent } from './components/graduated/graduated.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HomeComponent } from './components/home/home.component';
     ChartComponent,
     DashboardComponent,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    GraduatedComponent
   ],
   imports: [
     BrowserModule,
