@@ -122,7 +122,7 @@ router.route('/signin')
 
             if(status){
                 if(statusRole){ 
-                    const token = jwt.sign(result, key, {expiresIn: 60*5});
+                    const token = jwt.sign(result, key, {expiresIn: 60000*5});
                     res.status(200).json({result, token, status});
                 }
                 else{

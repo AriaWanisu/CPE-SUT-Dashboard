@@ -37,7 +37,8 @@
     <div class="p-5 text-center bg-light">
       <h1 class="mb-3">Heading</h1>
       <h4 class="mb-3">Subheading</h4>
-      <button type="submit" class="btn btn-primary btn-block container-fluid" (click)="goLogin()" style="height: 50px;width: 100px;" >เข้าสู่ระบบ</button>
+      <button *ngIf="local.get('user') == null" type="submit" class="btn btn-primary btn-block container-fluid" (click)="goLogin()" style="height: 50px;width: 100px;" >เข้าสู่ระบบ</button>
+      <button *ngIf="local.get('user') !== null" type="submit" class="btn btn-primary btn-block container-fluid" (click)="goDash()" style="height: 50px;width: 100px;" >ไปที่ dashboard</button>
     </div>
     <!-- Jumbotron -->
   </header>

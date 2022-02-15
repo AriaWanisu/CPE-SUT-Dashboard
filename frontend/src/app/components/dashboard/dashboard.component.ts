@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-
+import { StudentService } from 'src/app/services/student.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,17 +13,17 @@ export class DashboardComponent implements AfterViewInit {
   r: any = [];
 
   ngAfterViewInit(): void {
-    this.getData();
-    const script = document.createElement('script');
-    script.src = '../../../assets/js/chart.js';
-    document.body.appendChild(script);
+    // this.getData();
+    // const script = document.createElement('script');
+    // script.src = '../../../assets/js/chart.js';
+    // document.body.appendChild(script);
 
-    script.setAttribute("id", "chart");
-    script.setAttribute("data-dummy-json", this.retire);
+    // script.setAttribute("id", "chart");
+    // script.setAttribute("data-dummy-json", this.retire);
   }
 
-  constructor(private dataser: DataService) {
-    console.log(this.data);
+  constructor(private dataser: DataService, private ss: StudentService) {
+    
   }
 
   getData() {

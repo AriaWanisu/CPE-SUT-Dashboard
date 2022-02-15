@@ -23,14 +23,16 @@ expressApp.use((req, res, next) => {
     })
     .catch(err=> {
         console.log('Cannot connect to MongoDB');
-        res.status(501).send('Cannot connect to MongoDB')
+        res.status(501).send('Cannot connect to MongoDB');
     });
 });
 
-expressApp.use('/user', require('./routes/user'))
-expressApp.use('/login', require('./routes/signin'))
-expressApp.use('/api', require('./api/data'))
-expressApp.use('/api', require('./api/graduated'))
+expressApp.use('/user', require('./routes/user'));
+expressApp.use('/login', require('./routes/signin'));
+expressApp.use('/api', require('./api/data'));
+expressApp.use('/api', require('./api/graduated'));
+expressApp.use('/api', require('./api/user'));
+expressApp.use('/api', require('./api/student'));
 
 expressApp.listen(3000, function(){
     console.log('Listening on port 3000');

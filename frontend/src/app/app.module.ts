@@ -20,6 +20,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DataService  } from './services/data.service';
 import { HomeComponent } from './components/home/home.component';
 import { GraduatedComponent } from './components/graduated/graduated.component';
+import { StudentComponent } from './components/student/student.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { GraduatedComponent } from './components/graduated/graduated.component';
     DashboardComponent,
     NotFoundComponent,
     HomeComponent,
-    GraduatedComponent
+    GraduatedComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,
