@@ -6,36 +6,33 @@ const authorization = require("../config/authorize")
 var Schema = require('mongoose').Schema;
 
 var Schema = require('mongoose').Schema;
-const StudentSchema = Schema({
-    term: String,
+const genderSchema = Schema({
+    term: Number,
     course: String,
-    year1: Number,
-    year2: Number,
-    year3: Number,
-    year4: Number,
-    year5up: Number,
+    male: Number,
+    female: Number,
     total: Number
 },{
-    collection: 'student'
+    collection: 'gender'
 });
 
-let student
+let gender
 try {
-    student = mongoose.model('student')
+    gender = mongoose.model('gender')
 } catch (error) {
-    student = mongoose.model('student', StudentSchema);
+    gender = mongoose.model('gender', genderSchema);
 }
 
-const getStudent = () => {
+const getGender = () => {
     return new Promise((resolve,reject) => {
-        student.find({}, (err,data) =>{
+        gender.find({}, (err,data) =>{
             if(err){
                 reject(new Error('err'));
             }else{
                 if(data){
                     resolve(data)
                 }else{
-                    reject(new Error('Cannot get student!'));
+                    reject(new Error('Cannot get gender!'));
                 }
             }
         })
@@ -43,8 +40,8 @@ const getStudent = () => {
 }
 
 
-router.route('/student').get(authorization, (req, res) => {
-    getStudent().then(result => {
+router.route('/gender').get(authorization, (req, res) => {
+    getGender().then(result => {
         console.log(result);
         res.status(200).json(result);
     })

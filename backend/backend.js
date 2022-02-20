@@ -33,6 +33,9 @@ expressApp.use('/api', require('./api/data'));
 expressApp.use('/api', require('./api/graduated'));
 expressApp.use('/api', require('./api/user'));
 expressApp.use('/api', require('./api/student'));
+expressApp.use('/api', require('./api/work'));
+expressApp.use('/api', require('./api/gender'));
+expressApp.use('/api', require('./api/subject'));
 
 expressApp.listen(3000, function(){
     console.log('Listening on port 3000');

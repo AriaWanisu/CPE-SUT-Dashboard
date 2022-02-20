@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<div class="wrapper">
+    <app-header *ngIf="local.get('user') !== null"></app-header>
+    <app-menu *ngIf="local.get('user') !== null"></app-menu>
+    <app-setting *ngIf="local.get('user') !== null"></app-setting>
+    <router-outlet></router-outlet>
+    <app-footer *ngIf="local.get('user') !== null"></app-footer>    
+</div>

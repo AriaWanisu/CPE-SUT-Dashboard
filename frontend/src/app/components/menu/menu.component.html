@@ -37,7 +37,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a class="nav-link active">
+                    <a routerLink="/dashboard" class="nav-link" routerLinkActive="active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -45,22 +45,28 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item  { active: isActive('/graduated')}">
-                            <a routerLink="/graduated" class="nav-link" routerLinkActive="active">
+                        <li class="nav-item">
+                            <a routerLink="dashboard/graduated" class="nav-link" routerLinkActive="active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ระยะเวลาการศึกษา</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a routerLink="/student" class="nav-link" routerLinkActive="active">
+                            <a routerLink="dashboard/student" class="nav-link" routerLinkActive="active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ข้อมูลนักศึกษา</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a routerLink="./index3.html" class="nav-link" routerLinkActive="active">
+                            <a routerLink="/dashboard/gender" class="nav-link" routerLinkActive="active">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v3</p>
+                                <p>ข้อมูลนักศึกษาแยกเพศ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="dashboard/work" class="nav-link" routerLinkActive="active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>การได้งานทำ</p>
                             </a>
                         </li>
                     </ul>

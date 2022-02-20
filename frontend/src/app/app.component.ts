@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { LocalStorageService } from 'angular-web-storage';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'frontend';
+
+  constructor( public local: LocalStorageService){}
 }

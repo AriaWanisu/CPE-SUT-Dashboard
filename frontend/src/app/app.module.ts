@@ -21,6 +21,9 @@ import { DataService  } from './services/data.service';
 import { HomeComponent } from './components/home/home.component';
 import { GraduatedComponent } from './components/graduated/graduated.component';
 import { StudentComponent } from './components/student/student.component';
+import { WorkComponent } from './components/work/work.component';
+import { GenderComponent } from './components/gender/gender.component';
+import { SubjectComponent } from './components/subject/subject.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { StudentComponent } from './components/student/student.component';
     NotFoundComponent,
     HomeComponent,
     GraduatedComponent,
-    StudentComponent
+    StudentComponent,
+    WorkComponent,
+    GenderComponent,
+    SubjectComponent
   ],
   imports: [
     BrowserModule,

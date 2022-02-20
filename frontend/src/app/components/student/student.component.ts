@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StudentService } from 'src/app/services/student.service'; 
 import { LocalStorageService } from 'angular-web-storage';
 import { Chart } from 'chart.js';
+import { GenderComponent } from '../gender/gender.component';
+
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -9,9 +11,17 @@ import { Chart } from 'chart.js';
 })
 export class StudentComponent implements OnInit {
 
+  @ViewChild(GenderComponent) genderComponent: GenderComponent;
   studentAmount: any;
   courseChart: any;
   yearChart: any;
+  diffChart: any;
+
+  total: any;
+  thisyear: any;
+  male: any;
+  female: any;
+  gender: any;
 
   students: any;
   token: any;
@@ -20,12 +30,27 @@ export class StudentComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = this.local.get('user').token;
-    console.log(this.token);
     
+    this.studentService.getStudentGender(this.token).subscribe(
+      (res) => {
+
+        this.gender = res;
+
+        let term = res.map(res => res.term);
+        let male = res.map(res => res.male);
+        let female = res.map(res => res.female);
+
+        for(var i = 0; i < this.gender.length; i++){
+          if(term[i-1] == term[i]){
+            this.male = male[i-1]+male[i];
+            this.female = female[i-1]+female[i];
+          }
+        }
+      });
+
     this.studentService.getStudent(this.token).subscribe(
       (data) => {
         this.students = data;
-        console.log(this.students);
 
         let term = data.map(data => data.term);
         let total = data.map(data => data.total);
@@ -63,10 +88,8 @@ export class StudentComponent implements OnInit {
           }
         }
 
-        console.log(allTotal);
-        console.log(year);
-        console.log(total1);
-        console.log(total2);
+        this.total = allTotal[allTotal.length-1]
+        this.thisyear = year[year.length-1]
 
         this.studentAmount = new Chart("amount", {
           type: "line",
@@ -75,9 +98,33 @@ export class StudentComponent implements OnInit {
             datasets: [
               {
                 label: "จำนวนนักศึกษาที่กำลังศึกษา",
-                data: allTotal
-              }
+                data: allTotal,
+                fill: true,
+                tension: 0.4,
+                order: 2
+              },
+              { 
+                label: "หลักสูตร วิศวกรรมคอมพิวเตอร์ 2554",
+                fill: true,
+                data: total1,
+                tension: 0.4,
+                order: 0,
+              },
+              { 
+                label: "หลักสูตร วิศวกรรมคอมพิวเตอร์ 2560",
+                fill: true,
+                data: total2,
+                tension: 0.4,
+                order: 1
+              },
             ]
+          },
+          options: {
+            plugins: {
+              filler: {
+                propagate: true
+              }
+            }
           }
         });
 

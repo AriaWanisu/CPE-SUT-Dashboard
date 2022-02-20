@@ -6,18 +6,24 @@ import { LocalStorageService } from 'angular-web-storage';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class SubjectService {
 
-  user: any
+  subject: any;
 
   constructor(private http: HttpClient,public local: LocalStorageService) { }
 
-  getUser(){
-    return this.http.get<any>('http://localhost:3000/api/user/'+this.local.get('user').result.email).pipe(map(data => {
+  getSubject(token: any){
+
+    const headers = {'Authorization': token}
+    const url = 'http://localhost:3000/api/subject';
+    
+    return this.http.get<any>(url, {headers} ).pipe(map(data => {
       if(data){
-        this.user = data;
+        this.subject = data;
+        console.log(this.subject);
       }
-      return this.user
+      return this.subject
     }));
   }
+
 }

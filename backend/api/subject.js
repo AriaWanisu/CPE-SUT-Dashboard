@@ -6,36 +6,44 @@ const authorization = require("../config/authorize")
 var Schema = require('mongoose').Schema;
 
 var Schema = require('mongoose').Schema;
-const StudentSchema = Schema({
-    term: String,
-    course: String,
-    year1: Number,
-    year2: Number,
-    year3: Number,
-    year4: Number,
-    year5up: Number,
-    total: Number
+const subjectSchema = Schema({
+    year: Number,
+    term: Number,
+    subject: Number,
+    a: Number,
+    b_plus: Number,
+    b: Number,
+    c_plus: Number,
+    d_plus: Number,
+    d: Number,
+    f: Number,
+    p: Number,
+    s: Number,
+    u: Number,
+    total: Number,
+    avg_GPA: Number,
+    STDEV: Number
 },{
-    collection: 'student'
+    collection: 'subject'
 });
 
-let student
+let subject
 try {
-    student = mongoose.model('student')
+    subject = mongoose.model('subject')
 } catch (error) {
-    student = mongoose.model('student', StudentSchema);
+    subject = mongoose.model('subject', subjectSchema);
 }
 
-const getStudent = () => {
+const getSubject = () => {
     return new Promise((resolve,reject) => {
-        student.find({}, (err,data) =>{
+        subject.find({}, (err,data) =>{
             if(err){
                 reject(new Error('err'));
             }else{
                 if(data){
                     resolve(data)
                 }else{
-                    reject(new Error('Cannot get student!'));
+                    reject(new Error('Cannot get work!'));
                 }
             }
         })
@@ -43,8 +51,8 @@ const getStudent = () => {
 }
 
 
-router.route('/student').get(authorization, (req, res) => {
-    getStudent().then(result => {
+router.route('/subject').get(authorization, (req, res) => {
+    getSubject().then(result => {
         console.log(result);
         res.status(200).json(result);
     })

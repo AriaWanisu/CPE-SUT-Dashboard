@@ -9,6 +9,7 @@ import { LocalStorageService } from 'angular-web-storage';
 export class StudentService {
 
   student: any;
+  studentGender: any;
 
   constructor(private http: HttpClient,public local: LocalStorageService) { }
 
@@ -20,9 +21,22 @@ export class StudentService {
     return this.http.get<any>(url, {headers} ).pipe(map(data => {
       if(data){
         this.student = data;
-        console.log(this.student);
       }
       return this.student
     }));
   }
+
+  getStudentGender(token: any){
+
+    const headers = {'Authorization': token}
+    const url = 'http://localhost:3000/api/gender';
+    
+    return this.http.get<any>(url, {headers} ).pipe(map(data => {
+      if(data){
+        this.studentGender = data;
+      }
+      return this.studentGender
+    }));
+  }
+
 }

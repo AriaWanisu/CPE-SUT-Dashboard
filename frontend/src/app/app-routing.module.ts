@@ -12,6 +12,9 @@ import { LoginGuardService } from './services/login-guard.service';
 import { HomeComponent } from './components/home/home.component';
 import { GraduatedComponent } from './components/graduated/graduated.component';
 import { StudentComponent } from './components/student/student.component';
+import { WorkComponent } from './components/work/work.component';
+import { GenderComponent } from './components/gender/gender.component';
+
 const routes: Routes = [
   {path: ' ' , redirectTo: '/home'},
   {path: 'home' , component: HomeComponent},
@@ -19,10 +22,12 @@ const routes: Routes = [
   {path: 'admin_login', component: AdminLoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
-  {path: 'student', component: StudentComponent, canActivate: [AuthGuardService]},
+  {path: 'dashboard/student', component: StudentComponent, canActivate: [AuthGuardService]},
+  {path: 'dashboard/work', component: WorkComponent, canActivate: [AuthGuardService]},
   {path: '404', component: NotFoundComponent, canActivate: [AuthGuardService]},
+  {path: 'dashboard/gender', component: GenderComponent, canActivate: [AuthGuardService]},
   {path: 'chart', component: ChartComponent},
-  {path: 'graduated', component: GraduatedComponent},
+  {path: 'dashboard/graduated', component: GraduatedComponent , canActivate: [AuthGuardService]},
   {path: '**', redirectTo: '/home'}
 ];
 

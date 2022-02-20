@@ -25,17 +25,6 @@ export class MenuComponent implements OnInit {
     );
   }
 
-  changeActive(){
-    let currentLocation = location.href;
-    let menuItem = document.querySelectorAll('a');
-    let menuLength = menuItem.length;
-    for(let i = 0; i < menuLength ; i++){
-      if(menuItem[i].href === currentLocation){
-        menuItem[i].className = 'active';
-      }
-    }
-  }
-
   userForm = new FormGroup({
     firstName: new FormControl('',[Validators.required]),
     lastName: new FormControl('',[Validators.required]),
