@@ -13,8 +13,11 @@ export class GenderComponent implements OnInit {
   gender: any;
   token: any;
   genderChart: any;
+  pieChart: any;
   thisMale: any;
   thisFemale: any;
+  oldChart: any;
+  newChart: any;
 
   constructor(private studentServices: StudentService,public local: LocalStorageService) { }
 
@@ -35,7 +38,10 @@ export class GenderComponent implements OnInit {
         let year = [];
         let totalM = [];
         let totalF = [];
-        
+        let oldMale = [];
+        let oldFemale = [];
+        let newMale = [];
+        let newFemale = [];
 
         for(var i = 0; i < this.gender.length; i++){
           if(term[i-1] == term[i]){
@@ -43,8 +49,60 @@ export class GenderComponent implements OnInit {
             totalM.push(male[i-1]+male[i]);
             totalF.push(female[i-1]+female[i])
           }
+          if(course[i] == "วิศวกรรมคอมพิวเตอร์-2554"){
+            oldMale.push(male[i]);
+            oldFemale.push(female[i]);
+          } else if(course[i] == "วิศวกรรมคอมพิวเตอร์-2560"){
+            newMale.push(male[i]);
+            newFemale.push(female[i]);
+          }
         }
+
+        console.log(oldMale);
         
+
+        this.oldChart = new Chart('oldChart', {
+          type: 'bar',
+          data: {
+            labels: year,
+            datasets: [
+              {
+                label: 'นักศึกษาชาย',
+                data: oldMale
+            },
+            {
+                label: 'นักศึกษาหญิง',
+                data: oldFemale
+            }]
+          }
+        });
+
+        this.newChart = new Chart('newChart', {
+          type: 'bar',
+          data: {
+            labels: year,
+            datasets: [
+              {
+                label: 'นักศึกษาชาย',
+                data: newMale
+            },
+            {
+                label: 'นักศึกษาหญิง',
+                data: newFemale
+            }]
+          }
+        });
+        
+        this.pieChart = new Chart('pieChart',{
+          type: 'pie',
+          data: {
+            labels: ["นักศึกษาชาย","นักศึกษาหญิง"],
+            datasets: [{
+              data: [totalM[totalM.length-1],totalF[totalF.length-1]]
+            }]
+          }
+        })
+
         this.genderChart = new Chart("genderChart", {
           type: 'bar',
           data: {
@@ -52,15 +110,30 @@ export class GenderComponent implements OnInit {
             datasets: [
               {
                 label: 'นักศึกษาชาย',
-                data: totalM
+                data: totalM,
+                order: 1
               },
               {
                 label: "นักศึกษาหญิง",
-                data: totalF
+                data: totalF,
+                order: 1
+              },
+              {
+                label: 'นักศึกษาชาย',
+                data: totalM,
+                type: "line",
+                order: 0
+              },
+              {
+                label: "นักศึกษาหญิง",
+                data: totalF,
+                type: "line",
+                order: 0
               }
             ]
           }
         })
+
       }
     );
   }

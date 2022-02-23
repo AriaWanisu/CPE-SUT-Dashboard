@@ -37,128 +37,78 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a routerLink="/dashboard" class="nav-link" routerLinkActive="active">
+                    <a routerLink="/student" class="nav-link" routerLinkActive="active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            ข้อมูลนักศึกษา
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview active">
                         <li class="nav-item">
-                            <a routerLink="dashboard/graduated" class="nav-link" routerLinkActive="active">
+                            <a routerLink="student/general" class="nav-link" routerLinkActive="active">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>ระยะเวลาการศึกษา</p>
+                                <p>นักศึกษาที่กำลังศึกษา</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a routerLink="dashboard/student" class="nav-link" routerLinkActive="active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>ข้อมูลนักศึกษา</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a routerLink="/dashboard/gender" class="nav-link" routerLinkActive="active">
+                            <a routerLink="/student/gender" class="nav-link" routerLinkActive="active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ข้อมูลนักศึกษาแยกเพศ</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a routerLink="dashboard/work" class="nav-link" routerLinkActive="active">
+                            <a routerLink="student/graduated" class="nav-link" routerLinkActive="active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ระยะเวลาการศึกษา</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="student/work" class="nav-link" routerLinkActive="active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>การได้งานทำ</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item" >
-                    <a href="/dashboard" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Widgets
-                            <span class="right badge badge-danger">New</span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item menu-open">
+                    <a routerLink="/subject" class="nav-link" routerLinkActive="active">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Layout Options
+                            ข้อมูลรายวิชา
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
+                            <!-- <span class="badge badge-info right">6</span> -->
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
+                            <a routerLink="subject/gpa" class="nav-link" routerLinkActive="active">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Top Navigation</p>
+                                <p>GPA วิชาต่างๆ</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Top Navigation + Sidebar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/boxed.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Boxed</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fixed Sidebar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fixed Navbar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-footer.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fixed Footer</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Collapsed Sidebar</p>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item menu-open0">
+                    <a routerLink="score" class="nav-link" routerLinkActive="active">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Charts
+                            ผลการประเมิน
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/charts/chartjs.html" class="nav-link">
+                            <a routerLink="score/teacher" class="nav-link" routerLinkActive="active">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>ChartJS</p>
+                                <p>ผลประเมินการสอนผู้สอน</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" *ngIf="isAdmin">
                             <a href="pages/charts/flot.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Flot</p>
+                                <p>only admin</p>
                             </a>
                         </li>
                         <li class="nav-item">

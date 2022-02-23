@@ -18,11 +18,12 @@ export class GraduatedComponent implements OnInit {
 
   constructor(private gs: GraduetedService) {
       this.onLoading();
-      console.log(this.gdata);
    }
 
   ngOnInit(): void {
     this.gs.getGraduated().subscribe(res => {
+      console.log("ssss");
+      
       let early = res.map(res => res.early);
       let normal = res.map(res => res.normal);
       let over = res.map(res => res.over);

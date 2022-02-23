@@ -9,7 +9,7 @@ var Schema = require('mongoose').Schema;
 const subjectSchema = Schema({
     year: Number,
     term: Number,
-    subject: Number,
+    subject: String,
     a: Number,
     b_plus: Number,
     b: Number,
@@ -50,9 +50,37 @@ const getSubject = () => {
     })
 }
 
+const getOneSubject = (id) => {
+    return new Promise((resolve,reject) => {
+        subject.findOne( {_id: id} , (err,data) =>{
+            if(err){
+                reject(new Error('err'));
+            }else{
+                if(data){
+                    resolve(data)
+                }else{
+                    reject(new Error('Cannot get this Subject!'));
+                }
+            }
+        })
+    })
+}
 
-router.route('/subject').get(authorization, (req, res) => {
+
+router.route('/subjects').get(authorization, (req, res) => {
     getSubject().then(result => {
+        console.log(result);
+        res.status(200).json(result);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(404).json(err);
+    })
+})
+
+router.route('/subject/:sid').get(authorization, (req, res) => {
+    const id = req.params.sid;
+    getOneSubject(id).then(result => {
         console.log(result);
         res.status(200).json(result);
     })

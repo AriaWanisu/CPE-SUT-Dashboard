@@ -1,1 +1,100 @@
-<p>subject works!</p>
+<div class="content-wrapper" style="font-family: 'Prompt';">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>ข้อมูล GPA รายวิชาต่างๆ</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item active">Subject</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <form [formGroup]='targetSubject'>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">เลือกรายวิชา</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row"> 
+                                    <div class="col-md-3">
+                                        <select class="form-control" (change)="selectYear($event)" formControlName="year">
+                                            <option selected>เลือกปีการศึกษา</option>
+                                            <option *ngFor = "let years of year; index as i" value="{{year[i]}}">{{year[i]}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select class="form-control" (change)="selectTerm($event)" formControlName="term">
+                                            <option selected>เลือกเทอม</option>
+                                            <option *ngFor = "let terms of term; index as i" value="{{term[i]}}">{{term[i]}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select class="form-control" formControlName="subject" (change)="createChart($event)">
+                                            <option selected>เลือกวิชา</option>
+                                            <option *ngFor = "let subject of termSubject; index as i" value="{{termSubject[i]._id}}">{{termSubject[i].subject}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="submit" class="btn btn-primary" (click)="onClick()">Submit</button>
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- ./input -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">กราฟการกระจายคะแนนรายวิชา&nbsp;&nbsp;</h3>
+                            <h3 class="card-title" *ngIf="oneSubject"> {{oneSubject.subject}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id='gpa'>{{ gpaChart }}</canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <div class="col-md-4">
+                    <!-- card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">เลือกรายวิชา</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id='pie'>{{ gpaPie }}</canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+    </form>
+</div>
+

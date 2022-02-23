@@ -24,6 +24,7 @@ import { StudentComponent } from './components/student/student.component';
 import { WorkComponent } from './components/work/work.component';
 import { GenderComponent } from './components/gender/gender.component';
 import { SubjectComponent } from './components/subject/subject.component';
+import { ScoreComponent } from './components/score/score.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { SubjectComponent } from './components/subject/subject.component';
     StudentComponent,
     WorkComponent,
     GenderComponent,
-    SubjectComponent
+    SubjectComponent,
+    ScoreComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,9 +15,23 @@ export class SubjectService {
   getSubject(token: any){
 
     const headers = {'Authorization': token}
-    const url = 'http://localhost:3000/api/subject';
+    const url = 'http://localhost:3000/api/subjects';
     
     return this.http.get<any>(url, {headers} ).pipe(map(data => {
+      if(data){
+        this.subject = data;
+        console.log(this.subject);
+      }
+      return this.subject
+    }));
+  }
+
+  getOneSubject(id: any,token: any){
+
+    const headers = {'Authorization': token}
+    const url = 'http://localhost:3000/api/subject/';
+    
+    return this.http.get<any>(url+id,{headers}).pipe(map(data => {
       if(data){
         this.subject = data;
         console.log(this.subject);

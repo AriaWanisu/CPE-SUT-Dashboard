@@ -49,7 +49,7 @@ const findUser = (email) => {
                 reject(new Error('Cannot find email!'));
             }else{
                 if(data){
-                    resolve({email: data.email, password: data.password})
+                    resolve({email: data.email, password: data.password, role: data.role})
                 }else{
                     reject(new Error('Cannot find email!'));
                 }
@@ -113,12 +113,16 @@ router.route('/signin')
         console.log(playload);
 
         try{
-            const result = await findUser(playload.email);
-            const loginStatus = await compareHash(playload.password, result.password);
+            const data = await findUser(playload.email);
+            const loginStatus = await compareHash(playload.password, data.password);
             const statusRole = await checkRole(playload.email,playload.role);
 
             const status = loginStatus.status;
             console.log(statusRole)
+            const result = {
+                email: data.email,
+                role: data.role
+            }
 
             if(status){
                 if(statusRole){ 

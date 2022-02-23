@@ -78,26 +78,24 @@ export class WorkComponent implements OnInit {
               {
                 label: "ได้งานทำ",
                 data: get,
-                order: 1
+                stack: 'Stack 0',
               },
               {
                 label: "เรียนต่อ",
                 data: study,
-                order: 1
+                stack: 'Stack 0',
               },
               {
                 label: "ไม่ได้งานทำ",
                 data: not,
-                order: 1
+                stack: 'Stack 0',
               },
               {
                 label: "ได้งานทำก่อนจบ",
                 data: early,
-                type: "line",
                 borderColor: 'rgba(75, 192, 192)',
                 backgroundColor: 'rgba(75, 192, 192)',
-                pointBackgroundColor: 'rgba(75, 192, 192)',
-                order: 0
+                stack: 'Stack 1',
               }
             ],
           },

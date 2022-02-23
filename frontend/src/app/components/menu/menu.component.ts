@@ -11,10 +11,14 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
 export class MenuComponent implements OnInit {
 
   user: any;
+  isAdmin: boolean = false;
 
   constructor(public local: LocalStorageService,private us: UserService) { }
 
   ngOnInit(): void {
+    if(this.local.get('user').result.role == "Admin"){
+      this.isAdmin = true;
+    }
     this.us.getUser().subscribe(
       (data) => {
         this.user = data;

@@ -30,6 +30,8 @@ export class StudentComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = this.local.get('user').token;
+    console.log("1234");
+    
     
     this.studentService.getStudentGender(this.token).subscribe(
       (res) => {

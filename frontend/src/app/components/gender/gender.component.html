@@ -1,5 +1,93 @@
-<div class="content-wrapper">
+<div class="content-wrapper" style="font-family: 'Prompt';">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>ข้อมูลนักศึกษาแยกเพศ</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item active">Gender</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
 
-    <canvas id="genderChart"> {{ genderChart }}</canvas>
+     <!-- Main content -->
+     <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- CHART 2-->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">กราฟแสดงอัตราส่วนเพศนักศึกษา {{gender[gender.length-1].term}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="pieChart"> {{ pieChart }}</canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <div class="col-md-8">
+                    <!-- CHART 2-->
+                    <div class="card card-secondary">
+                        <div class="card-header ">
+                            <h3 class="card-title">กราฟแสดงจำนวนนักศึกษาแยกเพศตั้งแต่ปี {{gender[0].term}} - {{gender[gender.length-1].term}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="genderChart"> {{ genderChart }}</canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- end 1 row -->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- CHART 3 -->
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">กราฟแสดงจำนวนนักศึกษาแยกเพศตั้งแต่ปี {{gender[0].term}} - {{gender[gender.length-1].term}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="oldChart"> {{ oldChart }}</canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <div class="col-md-6">
+                    <!-- CHART 4 -->
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">กราฟแสดงจำนวนนักศึกษาแยกเพศตั้งแต่ปี {{gender[0].term}} - {{gender[gender.length-1].term}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="newChart"> {{ newChart }}</canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+     </section>
+
+   
 
 </div>

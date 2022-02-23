@@ -14,6 +14,8 @@ import { GraduatedComponent } from './components/graduated/graduated.component';
 import { StudentComponent } from './components/student/student.component';
 import { WorkComponent } from './components/work/work.component';
 import { GenderComponent } from './components/gender/gender.component';
+import { SubjectComponent } from './components/subject/subject.component';
+import { ScoreComponent } from './components/score/score.component';
 
 const routes: Routes = [
   {path: ' ' , redirectTo: '/home'},
@@ -22,12 +24,14 @@ const routes: Routes = [
   {path: 'admin_login', component: AdminLoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
-  {path: 'dashboard/student', component: StudentComponent, canActivate: [AuthGuardService]},
-  {path: 'dashboard/work', component: WorkComponent, canActivate: [AuthGuardService]},
-  {path: '404', component: NotFoundComponent, canActivate: [AuthGuardService]},
-  {path: 'dashboard/gender', component: GenderComponent, canActivate: [AuthGuardService]},
+  {path: 'student/general', component: StudentComponent, canActivate: [AuthGuardService]},
+  {path: 'student/work', component: WorkComponent, canActivate: [AuthGuardService]},
+  {path: 'student/gender', component: GenderComponent, canActivate: [AuthGuardService]},
+  {path: 'student/graduated', component: GraduatedComponent , canActivate: [AuthGuardService]},
+  {path: 'subject/gpa', component: SubjectComponent , canActivate: [AuthGuardService]},
+  {path: 'score/teacher', component: ScoreComponent , canActivate: [AuthGuardService]},
   {path: 'chart', component: ChartComponent},
-  {path: 'dashboard/graduated', component: GraduatedComponent , canActivate: [AuthGuardService]},
+  {path: '404', component: NotFoundComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo: '/home'}
 ];
 
