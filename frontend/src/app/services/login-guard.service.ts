@@ -11,10 +11,10 @@ import { LocalStorageService } from 'angular-web-storage';
 })
 export class LoginGuardService {
 
-   // inject AuthService และ Router 
-   constructor(private authService: AuthService, private router: Router, public local: LocalStorageService,private authGuard: AuthGuardService) {}
+  // inject AuthService และ Router 
+  constructor(private authService: AuthService, private router: Router, public local: LocalStorageService,private authGuard: AuthGuardService) {}
 
-    // กำนหนด guard ในส่วนของการใช้งานกับ  canActivate
+  // กำนหนด guard ในส่วนของการใช้งานกับ  canActivate
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if(this.local.get('user')!=null){ 
       console.log("didn't login")

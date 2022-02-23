@@ -16,6 +16,9 @@ import { WorkComponent } from './components/work/work.component';
 import { GenderComponent } from './components/gender/gender.component';
 import { SubjectComponent } from './components/subject/subject.component';
 import { ScoreComponent } from './components/score/score.component';
+import { UserComponent } from './components/user/user.component';
+import { PasswordComponent } from './components/password/password.component';
+import { AdminGuardService } from './services/admin-guard.service';
 
 const routes: Routes = [
   {path: ' ' , redirectTo: '/home'},
@@ -30,6 +33,8 @@ const routes: Routes = [
   {path: 'student/graduated', component: GraduatedComponent , canActivate: [AuthGuardService]},
   {path: 'subject/gpa', component: SubjectComponent , canActivate: [AuthGuardService]},
   {path: 'score/teacher', component: ScoreComponent , canActivate: [AuthGuardService]},
+  {path: 'user', component: UserComponent , canActivate: [AuthGuardService]},
+  {path: 'password', component: PasswordComponent , canActivate: [AuthGuardService]},
   {path: 'chart', component: ChartComponent},
   {path: '404', component: NotFoundComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo: '/home'}
@@ -38,6 +43,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [ AuthService, AuthGuardService, LoginGuardService ]
+  providers: [ AuthService, AuthGuardService, LoginGuardService, AdminGuardService ]
 })
 export class AppRoutingModule { }

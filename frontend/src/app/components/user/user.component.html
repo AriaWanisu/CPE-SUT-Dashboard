@@ -1,0 +1,196 @@
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="font-family: 'Prompt';">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>สวัสดี {{user.firstName}} {{user.lastName}}</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">User</a></li>
+              <li class="breadcrumb-item active">Profile</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                <h3 class="card-title">ข้อมูลส่วนตัว</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form>
+                <div class="card-body" >
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <td>รูป profile:</td>
+                                <td>
+                                    <div ><img class="img-responsive" src="{{user.img}}"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ชื่อ:</td>
+                                <td><b>{{user.firstName}} {{user.lastName}}</b></td>
+                            </tr>
+                        </thead>
+                        <tbody>    
+                            <tr>
+                                <td>เพศ:</td>
+                                <td><b>{{user.sex}}</b></td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>Email:</td>
+                                <td><b>{{user.email}}</b></td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>มือถือ:</td>
+                                <td><b>{{user.phone}}</b></td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>role:</td>
+                                <td><b>{{user.role}}</b></td>
+                            </tr>
+                        </tbody>  
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary" (click)="openEdit()">edit</button>
+                </div>
+                </form>
+            </div>
+            <!-- /.card -->
+            </div>
+            <!-- /. col-md-6 -->
+
+            <div class="col-md-6">
+                <div class="card card-primary"  *ngIf="edit">
+                    <div class="card-header">
+                        <h3 class="card-title">แก้ไขข้อมูลส่วนบุคคล</h3>
+                    </div>
+                    <!-- /. card header -->
+                    <div class="card-body">
+                        <form [formGroup]="profileForm">
+                            <div class="card-body" style="font-family: 'Prompt';" *ngIf="edit">
+    
+                                <!-- first row first name and last name-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="exampleInputEmail1">ชื่อ</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" 
+                                            formControlName='firstName' value={{profileForm.value.firstName}}>
+                                        </div>
+                                        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger"
+                                        role="alert">
+                                        <div *ngIf="firstName.errors?.['required']">
+                                            โปรดระบุชื่อ
+                                        </div>
+                                    </div>
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <label for="exampleInputEmail1">นาทสกุล</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" 
+                                            formControlName='lastName' value={{profileForm.value.lastName}}>
+                                        </div>
+                                        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger"
+                                        role="alert">
+                                        <div *ngIf="lastName.errors?.['required']">
+                                            โปรดระบุนามสกุล
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+    
+                                <!-- Second row phon number -->
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-md-6">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" disabled
+                                            value={{profileForm.value.email}}>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <label for="exampleInputEmail1">เบอร์โทร</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" 
+                                            formControlName='phone' value={{profileForm.value.phone}}>
+                                        </div>
+                                        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger"
+                                        role="alert">
+                                        <div *ngIf="phone.errors?.['required']">
+                                            โปรดระบุเบอร์โทรศัพท์
+                                        </div>
+                                        <div *ngIf="phone.errors?.['pattern']">
+                                            โปรดระบุเบอร์โทรศัพท์ให้ถูกต้อง
+                                        </div>
+                                        <div *ngIf="phone.errors?.['maxlength']">
+                                            โปรดระบุเบอร์โทรศัพท์ 10 หลัก
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- img -->
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-md-3">
+                                        Image:
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                          <input type="file" class="form-control-file" formControlName='img' (change)="onChangeImg($event)">
+                                        </div>
+                                        <div *ngIf="img.invalid && (img.dirty || img.touched)" class="alert alert-danger" role="alert"> 
+                                            <div *ngIf="img.errors?.['required']">
+                                                โปรดระบุเบอร์โทร
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+
+                                 <!-- img preview-->
+                                <div class="row" style="margin-top: 30px;">
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-9">
+                                        <img *ngIf="previewLoaded" class="img-thumbnail" [src]="this.profileForm.value.img" style="height:150px;">
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary" type="button" (click)="updateUser()" [disabled]="profileForm.invalid">แก้ไขข้อมูลส่วนตัว</button>
+                    </div>
+                </div>
+                <!-- /. card -->
+            </div>
+            <!-- /. col-md-6 -->
+        </div>
+        </div>
+    </section>
+ </div>

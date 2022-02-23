@@ -25,6 +25,9 @@ import { WorkComponent } from './components/work/work.component';
 import { GenderComponent } from './components/gender/gender.component';
 import { SubjectComponent } from './components/subject/subject.component';
 import { ScoreComponent } from './components/score/score.component';
+import { IonicModule } from '@ionic/angular';
+import { UserComponent } from './components/user/user.component';
+import { PasswordComponent } from './components/password/password.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,8 @@ import { ScoreComponent } from './components/score/score.component';
     GenderComponent,
     SubjectComponent,
     ScoreComponent,
+    UserComponent,
+    PasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,9 +59,10 @@ import { ScoreComponent } from './components/score/score.component';
     AngularWebStorageModule,
     ReactiveFormsModule,
     FormsModule,
-    NgChartsModule
+    NgChartsModule,
+    IonicModule.forRoot()
   ],
   providers: [DataService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
