@@ -113,12 +113,22 @@
                     <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title">สรุป</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" (click)="openEdit1()" *ngIf="isAdmin">
+                                    <ion-icon name="pencil-sharp" style="color: white;font-size: 18px;"></ion-icon>
+                                </button>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <span>จะเห็นได้ว่า ในปี 2562 - 2563 จำนวนนักศึกษาในสาขาวิศวกรรมคอมพิวเตอร์ มีจำนวนลดลงจากปีก่อนๆ และ เมื่อนำข้อมูลจากกราฟที่ 2 มาประกอบ จึงสามารถสรุปได้ว่า </span>
-                            <span>ที่จำนวนนักศึกษาในช่วงปี 2562 - 2563 ลดลง เนื่องมาจากนักศึกษาในหลักสูตร 2554 เริ่มสำเร็จการศึกษาไปจนหมด และถูกแทนที่ด้วยนักศึกษาจากหลักสูตร 2560 จำนวนนักศึกษาในปี 2564 จึงเริ่มกลับมาสูงดั่งเดิม</span>
+                        <div class="card-body" [formGroup]="Analysis1Form" >
+                            <span [innerHTML]="analysis1.text"></span>
+                            <h3 *ngIf="edit">แก้ไข</h3>
+                            <div [ngxSummernote]="config" formControlName='text' *ngIf="edit" ></div>
+                            <button type="button" class="btn btn-primary" [disabled]="text1.invalid" (click)="editAnalysis1()" *ngIf="edit" >submit</button>
                         </div>
                         <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div style="text-align: end;">writted by {{writer.firstName}} {{writer.lastName}}</div>
+                        </div>
                     </div>
                     <!-- /.card -->
                 </div>
@@ -146,11 +156,22 @@
                     <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title">สรุป</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" (click)="openEdit2()" *ngIf="isAdmin">
+                                    <ion-icon name="pencil-sharp" style="color: white;font-size: 18px;"></ion-icon>
+                                </button>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <span>คือเรื่องมันเป็นอย่างงี้ ...</span>
+                        <div class="card-body" [formGroup]="Analysis2Form" >
+                            <span [innerHTML]="analysis2.text"></span>
+                            <h3 *ngIf="edit2">แก้ไข</h3>
+                            <div [ngxSummernote]="config" formControlName='text' *ngIf="edit2" ></div>
+                            <button type="button" class="btn btn-primary" [disabled]="text2.invalid" (click)="editAnalysis2()" *ngIf="edit2" >submit</button>
                         </div>
                         <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div style="text-align: end;">writted by {{writer2.firstName}} {{writer2.lastName}}</div>
+                        </div>
                     </div>
                     <!-- /.card -->
                 </div>

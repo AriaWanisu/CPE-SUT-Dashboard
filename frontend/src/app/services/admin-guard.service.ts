@@ -11,7 +11,7 @@ export class AdminGuardService {
 
    // กำนหนด guard ในส่วนของการใช้งานกับ  canActivate
    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if(this.local.get('user').result != "Admin"){ 
+    if(this.local.get('user').result.role != "Admin"){ 
       console.log("not have premition")
       this.router.navigate(['/dashboard']); 
       return false; }

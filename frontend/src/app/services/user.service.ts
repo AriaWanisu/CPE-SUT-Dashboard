@@ -21,6 +21,17 @@ export class UserService {
     }));
   }
 
+  getUserById(id: any){
+    return this.http.get<any>('http://localhost:3000/api/userbyid/'+id).pipe(map(data => {
+      if(data){
+        this.user = data;
+        console.log(data);
+        
+      }
+      return this.user
+    }));
+  }
+
   updateUser(id: any,userdata: any){
 
     const url = 'http://localhost:3000/api/user/';

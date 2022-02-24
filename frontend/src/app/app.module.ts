@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { NgChartsModule } from 'ng2-charts';
+import { NgxSummernoteModule } from 'ngx-summernote';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +29,7 @@ import { ScoreComponent } from './components/score/score.component';
 import { IonicModule } from '@ionic/angular';
 import { UserComponent } from './components/user/user.component';
 import { PasswordComponent } from './components/password/password.component';
+import { AnalysisComponent } from './components/analysis/analysis.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { PasswordComponent } from './components/password/password.component';
     ScoreComponent,
     UserComponent,
     PasswordComponent,
+    AnalysisComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { PasswordComponent } from './components/password/password.component';
     ReactiveFormsModule,
     FormsModule,
     NgChartsModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    NgxSummernoteModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent],

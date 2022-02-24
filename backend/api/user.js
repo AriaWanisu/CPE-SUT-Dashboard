@@ -42,6 +42,23 @@ const getUser = (id) => {
     })
 }
 
+const getUserById = (id) => {
+    return new Promise((resolve,reject) => {
+        User.findOne({_id: id}, (err,data) =>{
+            if(err){
+                reject(new Error('err'));
+            }else{
+                if(data){
+                    resolve(data)
+                }else{
+                    reject(new Error('Not Found'));
+                }
+            }
+        })
+    })
+}
+
+
 const updateUser = (id,data) => {
     return new Promise((resolve,reject) => {
         User.updateOne({_id: id}, {firstName: data.firstName, lastName: data.lastName, phone: data.phone, img: data.img }, function(err,data){
@@ -65,6 +82,19 @@ router.route('/user/:id').get((req, res) => {
         res.status(404).json(err);
     })
 })
+
+router.route('/userbyid/:id').get((req, res) => {
+    const id = req.params.id;
+    getUserById(id).then(result => {
+        console.log(result);
+        res.status(200).json(result);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(404).json(err);
+    })
+})
+
 
 router.route('/user/:id').put((req, res) => {
     const id = req.params.id;

@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { StudentService } from 'src/app/services/student.service'; 
 import { LocalStorageService } from 'angular-web-storage';
 import { Chart } from 'chart.js';
-import { GenderComponent } from '../gender/gender.component';
+import { AnalysisService } from 'src/app/services/analysis.service';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-student',
@@ -11,28 +13,101 @@ import { GenderComponent } from '../gender/gender.component';
 })
 export class StudentComponent implements OnInit {
 
-  @ViewChild(GenderComponent) genderComponent: GenderComponent;
   studentAmount: any;
   courseChart: any;
   yearChart: any;
   diffChart: any;
 
+  config: any;
   total: any;
   thisyear: any;
   male: any;
   female: any;
   gender: any;
+  edit: boolean = false;
+  edit2: boolean = false;
+  isAdmin: boolean = false;
 
   students: any;
+  writer: any;
+  writer2: any;
+  user: any;
+
+  analysis1: any;
+  analysis2: any;
+
   token: any;
 
-  constructor(private studentService: StudentService,public local: LocalStorageService) { }
+  Analysis1Form = new FormGroup({
+    text: new FormControl('',[Validators.required]),
+    editor: new FormControl('',[Validators.required]),
+  });
+
+  Analysis2Form = new FormGroup({
+    text: new FormControl('',[Validators.required]),
+    editor: new FormControl('',[Validators.required]),
+  });
+
+  constructor(private studentService: StudentService,public local: LocalStorageService,private as: AnalysisService,private us: UserService) { }
 
   ngOnInit(): void {
     this.token = this.local.get('user').token;
-    console.log("1234");
+    if(this.local.get('user').result.role == "Admin"){
+      this.isAdmin = true;
+    }
+
+    this.us.getUser().subscribe(
+      (data) => {
+        this.user = data._id;
+      },
+      (err) => {
+        console.log("can't get user");
+      }
+    );
     
-    
+    this.as.getAnalysis("student1",this.token).subscribe(
+      (res) => {
+        this.analysis1 = res;
+        this.us.getUserById(res.editor).subscribe(
+          (data) => {
+            this.writer = data;
+          },
+          (err) => {
+            console.log("can't get writter");
+          }
+        );  
+        console.log(this.writer);
+      }
+    );
+
+    this.as.getAnalysis("student2",this.token).subscribe(
+      (res) => {
+        this.analysis2 = res;
+        this.us.getUserById(res.editor).subscribe(
+          (data) => {
+            this.writer2 = data;
+          },
+          (err) => {
+            console.log("can't get writter");
+          }
+        );  
+        console.log(this.writer);
+      }
+    );
+
+    this.config = {
+      placeholder: '',
+      tabsize: 2,
+      height: '200px',
+      toolbar: [
+          ['misc', ['codeview', 'undo', 'redo']],
+          ['style', ['bold', 'italic', 'underline', 'clear']],
+          ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+          ['para', ['style', 'ul', 'ol']],
+          ['insert', ['table', 'hr']]
+      ],
+    }
+
     this.studentService.getStudentGender(this.token).subscribe(
       (res) => {
 
@@ -182,6 +257,62 @@ export class StudentComponent implements OnInit {
       }
     );
 
+  }
+
+  openEdit1(){
+    this.edit = !this.edit;
+  }
+
+  openEdit2(){
+    this.edit2 = !this.edit2;
+  }
+
+  editAnalysis1(){
+    this.Analysis1Form.value.editor = this.user;
+
+    console.log(this.Analysis1Form.value);
+
+    this.as.editAnalysis(this.analysis1.index,this.token,this.Analysis1Form.value)
+      .subscribe( data => {
+          if(data.status == true){
+            alert(data.data.message)
+            window.location.reload();
+        }else{
+          alert('Address incorrect!');
+        }
+      },
+      err => {
+        console.log(err);
+        alert('Error!!');
+      });
+  }
+
+  editAnalysis2(){
+    this.Analysis2Form.value.editor = this.user;
+
+    console.log(this.Analysis2Form.value);
+
+    this.as.editAnalysis(this.analysis2.index,this.token,this.Analysis2Form.value)
+      .subscribe( data => {
+          if(data.status == true){
+            alert(data.data.message)
+            window.location.reload();
+        }else{
+          alert('Address incorrect!');
+        }
+      },
+      err => {
+        console.log(err);
+        alert('Error!!');
+      });
+  }
+
+  get text1() {
+    return this.Analysis1Form.get('text');
+  }
+
+  get text2() {
+    return this.Analysis2Form.get('text');
   }
 
 }
