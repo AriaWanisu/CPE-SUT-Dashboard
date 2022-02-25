@@ -39,7 +39,6 @@ const getScore = () => {
     })
 }
 
-
 router.route('/score').get(authorization, (req, res) => {
     getScore().then(result => {
         console.log(result);

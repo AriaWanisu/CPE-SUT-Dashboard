@@ -1,0 +1,177 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" style="font-family: 'Prompt';">
+    
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>ข้อมูลนักศึกษาแยกเพศ</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                <li class="breadcrumb-item active">Gender</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- ./ header -->
+
+      <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- ส่วนตารางข้อมูล -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-success">
+                        <div class="card-body">
+                            <button (click)="exportAsXLSX()" class="btn btn-secondary">Excel</button>
+                            <table class="table table-striped table-inverse">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>ปีการศึกษา</th>
+                                            <th>หลักสูตร</th>
+                                            <th>นักศึกษาชาย</th>
+                                            <th>นักศึกษาหญิง</th>
+                                            <th>รวม</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of genders; index as i">
+                                            <td scope="row">{{item.term}}</td>
+                                            <td>{{item.course}}</td>
+                                            <td>{{item.male}}</td>
+                                            <td>{{item.female}}</td>
+                                            <td>{{item.total}}</td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" (click)="openEdit(item)">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                    Edit
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-danger btn-sm" (click)="deleteGender(item)">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Delete
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button (click)="openAdd()" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info" *ngIf="isAdd">
+                        <div class="card-header"><h3 class="card-title">เพิ่มข้อมูลนักศึกษา</h3></div>
+                        <div class="card-body" [formGroup]="genderForm">
+                            <div class='row'>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >ปีการศึกษา</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName='term'>
+                                        </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="exampleInputEmail1" >หลักสูตร</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName='course'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >นักศึกษาชาย</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" (change)="addTotalMale($event)" formControlName='male'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >นักศึกษาหญิง</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" (change)="addTotalFemale($event)" formControlName='female'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >รวม</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value={{genderForm.value.total}} disabled>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button (click)="addData()" class="btn btn-primary"  [disabled]="genderForm.invalid">Submit</button>
+                        </div>
+                        <!-- /.card-footer -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+        
+             <!-- edit -->
+             <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info" *ngIf="isEdit">
+                        <div class="card-header"><h3 class="card-title">แก้ไขข้อมูล</h3></div>
+                        <div class="card-body" [formGroup]="genderForm">
+                            <div class='row'>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >ปีการศึกษา</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" disabled value={{genderForm.value.term}}>
+                                        </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="exampleInputEmail1">หลักสูตร</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" disabled value={{genderForm.value.course}}>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1">นักศึกษาชาย</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" (change)="addTotalMale($event)" value={{genderForm.value.male}} formControlName='male'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1">นักศึกษาหญิง</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" (change)="addTotalFemale($event)" value={{genderForm.value.female}} formControlName='female'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >รวม</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value={{genderForm.value.total}} disabled>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button (click)="updateGender()" class="btn btn-primary" [disabled]="genderForm.invalid">Submit</button>
+                        </div>
+                        <!-- /.card-footer -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.edit -->
+
+        </div>
+    </section>
+</div>

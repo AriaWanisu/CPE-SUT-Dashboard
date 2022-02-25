@@ -39,4 +39,92 @@ export class StudentService {
     }));
   }
 
+  addStudent(Data: any,token: any){
+
+    const headers = {'Authorization': token}
+    const url = 'http://localhost:3000/api/student';
+
+    return this.http.post<any>(url, Data, {headers})
+     .pipe(map(data => {
+       if(data){
+        this.student = data;
+       }
+       return data;
+     }));
+  }
+
+  updateStudent(id: any, data: any, token: any){
+
+    const headers = {'Authorization': token};
+    const url = 'http://localhost:3000/api/student/';
+
+    return this.http.put<any>(url+id,data,{headers}).pipe(map(data => {
+      if(data){
+        if(data.status == true){
+          console.log(data);
+        }
+      }
+      return data;
+    }));
+  }
+
+  deleteStudent(id: any){
+
+    const headers = {'Authorization': this.local.get('user').token};
+    const url = 'http://localhost:3000/api/student/';
+
+    console.log("delete Work!")
+
+    return this.http.delete<any>(url+id, {headers})
+      .pipe(map(data => {
+        if(data){
+          console.log(data);
+        }
+      }));
+  }
+
+  addGender(Data: any,token: any){
+
+    const headers = {'Authorization': token}
+    const url = 'http://localhost:3000/api/gender';
+
+    return this.http.post<any>(url, Data, {headers})
+     .pipe(map(data => {
+       if(data){
+        this.studentGender = data;
+       }
+       return data;
+     }));
+  }
+
+  updateGender(id: any, data: any, token: any){
+
+    const headers = {'Authorization': token};
+    const url = 'http://localhost:3000/api/gender/';
+
+    return this.http.put<any>(url+id,data,{headers}).pipe(map(data => {
+      if(data){
+        if(data.status == true){
+          console.log(data);
+        }
+      }
+      return data;
+    }));
+  }
+
+  deleteGender(id: any){
+
+    const headers = {'Authorization': this.local.get('user').token};
+    const url = 'http://localhost:3000/api/gender/';
+
+    console.log("delete Work!")
+
+    return this.http.delete<any>(url+id, {headers})
+      .pipe(map(data => {
+        if(data){
+          console.log(data);
+        }
+      }));
+  }
+
 }

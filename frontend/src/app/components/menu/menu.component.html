@@ -90,7 +90,7 @@
                         
                     </ul>
                 </li>
-                <li class="nav-item menu-open0">
+                <li class="nav-item menu-open">
                     <a routerLink="score" class="nav-link" routerLinkActive="active">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
@@ -125,8 +125,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item" *ngIf="isAdmin">
-                    <a href="#" class="nav-link">
+                <li class="nav-item menu-open" *ngIf="isAdmin">
+                    <a routerLink="admin" class="nav-link" routerLinkActive="active">
                         <i class="nav-icon fas fa-tree"></i>
                         <p>
                             จัดการข้อมูล
@@ -135,51 +135,21 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/UI/general.html" class="nav-link">
+                            <a routerLink="admin/student" class="nav-link" routerLinkActive="active">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>General</p>
+                                <p>จัดการข้อมูลนักศึกษา</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/icons.html" class="nav-link">
+                            <a routerLink="admin/gender" class="nav-link" routerLinkActive="active">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Icons</p>
+                                <p>จัดการข้อมูลเพศนักศึกษา</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/buttons.html" class="nav-link">
+                            <a routerLink="admin/analysis" class="nav-link" routerLinkActive="active">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Buttons</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/sliders.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Sliders</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/modals.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Modals & Alerts</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/navbar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Navbar & Tabs</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/timeline.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Timeline</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/ribbons.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Ribbons</p>
+                                <p>จัดการบทวิเคราะห์</p>
                             </a>
                         </li>
                     </ul>

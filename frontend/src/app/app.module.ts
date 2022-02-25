@@ -30,6 +30,8 @@ import { IonicModule } from '@ionic/angular';
 import { UserComponent } from './components/user/user.component';
 import { PasswordComponent } from './components/password/password.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
+import { StudentDataComponent } from './components/student-data/student-data.component';
+import { GenderDataComponent } from './components/gender-data/gender-data.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { AnalysisComponent } from './components/analysis/analysis.component';
     UserComponent,
     PasswordComponent,
     AnalysisComponent,
+    StudentDataComponent,
+    GenderDataComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,8 @@ import { ScoreComponent } from './components/score/score.component';
 import { UserComponent } from './components/user/user.component';
 import { PasswordComponent } from './components/password/password.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
+import { StudentDataComponent } from './components/student-data/student-data.component';
+import { GenderDataComponent } from './components/gender-data/gender-data.component';
 
 const routes: Routes = [
   // general
@@ -47,7 +49,9 @@ const routes: Routes = [
   {path: 'password', component: PasswordComponent , canActivate: [AuthGuardService]},
 
   // admin section
-  {path: 'analysis', component: AnalysisComponent , canActivate: [AdminGuardService]},
+  {path: 'admin/analysis', component: AnalysisComponent , canActivate: [AdminGuardService]},
+  {path: 'admin/student', component: StudentDataComponent , canActivate: [AdminGuardService]},
+  {path: 'admin/gender', component: GenderDataComponent , canActivate: [AdminGuardService]},
 
   // etc.
   {path: 'chart', component: ChartComponent},
