@@ -1,0 +1,177 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" style="font-family: 'Prompt';">
+    
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>ข้อมูลการสำเร็จการศึกษา</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                <li class="breadcrumb-item active">Graduated</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- ./ header -->
+
+      <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- ส่วนตารางข้อมูล -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-success">
+                        <div class="card-body">
+                            <button (click)="exportAsXLSX()" class="btn btn-secondary">Excel</button>
+                            <table class="table table-striped table-inverse">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>ปีการศึกษา</th>
+                                            <th>สำเร็จการศึกษาก่อน 4 ปี</th>
+                                            <th>สำเร็จการศึกษาภายใน 4 ปี</th>
+                                            <th>สำเร็จการศึกษาเกิน 4 ปี</th>
+                                            <th>อื่นๆ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of gradueted; index as i">
+                                            <td scope="row">{{item.year}}</td>
+                                            <td>{{item.early}}</td>
+                                            <td>{{item.normal}}</td>
+                                            <td>{{item.over}}</td>
+                                            <td>{{item.other}}</td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" (click)="openEdit(item)">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                    Edit
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-danger btn-sm" (click)="deleteGradueted(item)">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Delete
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button (click)="openAdd()" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info" *ngIf="isAdd">
+                        <div class="card-header"><h3 class="card-title">เพิ่มข้อมูลนักศึกษา</h3></div>
+                        <div class="card-body" [formGroup]="graduatedForm">
+                            <div class='row'>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >ปีการศึกษา</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName='year'>
+                                        </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="exampleInputEmail1" >สำเร็จการศึกษาก่อน 4 ปี</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName='early'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >สำเร็จการศึกษาภายใน 4 ปี</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName='normal'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >สำเร็จการศึกษาเกิน 4 ปี</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName='over'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >อื่นๆ</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName='other'>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button (click)="addData()" class="btn btn-primary"  [disabled]="graduatedForm.invalid">Submit</button>
+                        </div>
+                        <!-- /.card-footer -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <!-- edit -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info" *ngIf="isEdit">
+                        <div class="card-header"><h3 class="card-title">แก้ไขข้อมูล</h3></div>
+                        <div class="card-body" [formGroup]="graduatedForm">
+                            <div class='row'>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >ปีการศึกษา</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" disabled value={{graduatedForm.value.year}}>
+                                        </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="exampleInputEmail1">สำเร็จการศึกษาก่อน 4 ปี</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value={{graduatedForm.value.early}} formControlName='early'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1">สำเร็จการศึกษาภายใน 4 ปี</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value={{graduatedForm.value.normal}} formControlName='normal'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1">สำเร็จการศึกษาเกิน 4 ปี</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value={{graduatedForm.value.over}} formControlName='over'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >อื่นๆ</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value={{graduatedForm.value.other}} formControlName='other'>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button (click)="updateGradueted()" class="btn btn-primary" [disabled]="graduatedForm.invalid">Submit</button>
+                        </div>
+                        <!-- /.card-footer -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.edit -->
+
+        </div>
+    </section>
+</div>

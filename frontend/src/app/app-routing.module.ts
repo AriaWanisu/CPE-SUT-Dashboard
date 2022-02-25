@@ -26,6 +26,7 @@ import { PasswordComponent } from './components/password/password.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
 import { StudentDataComponent } from './components/student-data/student-data.component';
 import { GenderDataComponent } from './components/gender-data/gender-data.component';
+import { GraduatedDataComponent } from './components/graduated-data/graduated-data.component';
 
 const routes: Routes = [
   // general
@@ -52,6 +53,7 @@ const routes: Routes = [
   {path: 'admin/analysis', component: AnalysisComponent , canActivate: [AdminGuardService]},
   {path: 'admin/student', component: StudentDataComponent , canActivate: [AdminGuardService]},
   {path: 'admin/gender', component: GenderDataComponent , canActivate: [AdminGuardService]},
+  {path: 'admin/graduated', component: GraduatedDataComponent , canActivate: [AdminGuardService]},
 
   // etc.
   {path: 'chart', component: ChartComponent},

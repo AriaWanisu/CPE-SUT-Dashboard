@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from 'src/app/services/student.service'; 
-import { AnalysisService } from 'src/app/services/analysis.service';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { LocalStorageService } from 'angular-web-storage';
 import { ExcelService } from 'src/app/services/excel.service'
-import { PdfService } from 'src/app/services/pdf.service'
+
 
 @Component({
   selector: 'app-gender-data',
@@ -44,7 +43,7 @@ export class GenderDataComponent implements OnInit {
   }
 
   exportAsXLSX():void {
-    this.excelService.exportAsExcelFile(this.genders, 'students_data');
+    this.excelService.exportAsExcelFile(this.genders, 'students_gender_data');
   }
 
   openAdd(){
