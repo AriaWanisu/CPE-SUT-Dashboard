@@ -26,4 +26,49 @@ export class ScoreService {
     }));
   }
 
+  //insert
+  addScore(Data: any,token: any){
+
+    const headers = {'Authorization': token}
+    const url = 'http://localhost:3000/api/score';
+
+    return this.http.post<any>(url, Data, {headers})
+     .pipe(map(data => {
+       if(data){
+        this.score = data;
+       }
+       return data;
+     }));
+  }
+  
+   //update
+   updateScore(id: any, data: any, token: any){
+
+    const headers = {'Authorization': token};
+    const url = 'http://localhost:3000/api/score/';
+
+    return this.http.put<any>(url+id,data,{headers}).pipe(map(data => {
+      if(data){
+        if(data.status == true){
+          console.log(data);
+        }
+      }
+      return data;
+    }));
+  }
+
+   //delete
+   deleteScore(id: any){
+
+    const headers = {'Authorization': this.local.get('user').token};
+    const url = 'http://localhost:3000/api/score/';
+    
+    return this.http.delete<any>(url+id, {headers})
+      .pipe(map(data => {
+        if(data){
+          console.log(data);
+        }
+      }));
+  }
+
 }

@@ -21,7 +21,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8">
-                    <!-- STACKED BAR CHART -->
                     <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">กราฟเปรียบเทียบระยะเวลาที่นักศึกษาใช้ในการสำเร็จการศึกษา</h3>
@@ -60,16 +59,35 @@
                         </div>
                         <div class="card-body">
                             <div class="chart">
-                                <!-- <canvas id="stackedBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas> -->
                                 <canvas id="avgChart">{{ avgChart }}</canvas>
-                                <h3>สรุป</h3>
-                                <span>จากกราฟจะเห็นได้ว่า ตั้งแต่ช่วงปี 2556 - 2559 มีอัตราส่วนนักศึกษาที่สำเร็จการศึกษาก่อน 4 ปี มากที่สุด</span>
                             </div>
                         </div>
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
                 </div>
+            </div>
+
+            <div class="col-md-12">
+                <!-- STACKED BAR CHART -->
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">สรุป</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" (click)="openEdit()" *ngIf="isAdmin">
+                                <ion-icon name="pencil-sharp" style="color: white;font-size: 18px;"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" [formGroup]="graduatedForm">
+                        <span [innerHTML]="graduatedAnalysis.text"></span>
+                            <h3 *ngIf="edit">แก้ไข</h3>
+                            <div [ngxSummernote]="config" formControlName='text' *ngIf="edit" ></div>
+                            <button type="button" class="btn btn-primary" [disabled]="text.invalid" (click)="editAnalysis()" *ngIf="edit" >submit</button>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
             </div>
 
             <div class="container-fluid" style="margin-top:30px">

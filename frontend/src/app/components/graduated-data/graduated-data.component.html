@@ -16,10 +16,10 @@
             </div>
           </div>
         </div><!-- /.container-fluid -->
-      </section>
-      <!-- ./ header -->
+    </section>
+    <!-- ./ header -->
 
-      <!-- Main content -->
+    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <!-- ส่วนตารางข้อมูล -->
@@ -85,35 +85,37 @@
                                             <input type="text" class="form-control" formControlName='year'>
                                         </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <label for="exampleInputEmail1" >สำเร็จการศึกษาก่อน 4 ปี</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" formControlName='early'>
+                                            <input type="number" class="form-control" (change)="changeEarly($event)" formControlName='early'>
                                         </div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="exampleInputEmail1" >สำเร็จการศึกษาภายใน 4 ปี</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" formControlName='normal'>
+                                            <input type="number" class="form-control" (change)="changeNormal($event)" formControlName='normal'>
                                         </div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="exampleInputEmail1" >สำเร็จการศึกษาเกิน 4 ปี</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" formControlName='over'>
+                                            <input type="number" class="form-control" (change)="changeOver($event)" formControlName='over'>
                                         </div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="exampleInputEmail1" >อื่นๆ</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" formControlName='other'>
+                                            <input type="number" class="form-control" (change)="changeOther($event)" formControlName='other'>
                                         </div>
                                 </div>
                             </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button (click)="addData()" class="btn btn-primary"  [disabled]="graduatedForm.invalid">Submit</button>
+                            <button (click)="addData()" class="btn btn-primary"  [disabled]="graduatedForm.invalid || warning1 || warningOver100">Submit</button>
+                            <span *ngIf="warning1 || warning2 || warning3 || warning4" style="margin-left: 2rem;color: red;">*ต้องเป็นจำนวนร้อยละ</span>
+                            <span *ngIf="warningOver100" style="margin-left: 2rem;color: red;">*อัตราส่วนไม่ครบ 100 %</span>
                         </div>
                         <!-- /.card-footer -->
                     </div>
@@ -135,35 +137,37 @@
                                             <input type="text" class="form-control" disabled value={{graduatedForm.value.year}}>
                                         </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <label for="exampleInputEmail1">สำเร็จการศึกษาก่อน 4 ปี</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value={{graduatedForm.value.early}} formControlName='early'>
+                                            <input type="number" class="form-control" (change)="changeEarly($event)" value={{graduatedForm.value.early}} formControlName='early'>
                                         </div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="exampleInputEmail1">สำเร็จการศึกษาภายใน 4 ปี</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value={{graduatedForm.value.normal}} formControlName='normal'>
+                                            <input type="number" class="form-control" (change)="changeNormal($event)"value={{graduatedForm.value.normal}} formControlName='normal'>
                                         </div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="exampleInputEmail1">สำเร็จการศึกษาเกิน 4 ปี</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value={{graduatedForm.value.over}} formControlName='over'>
+                                            <input type="number" class="form-control" (change)="changeOver($event)" value={{graduatedForm.value.over}} formControlName='over'>
                                         </div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="exampleInputEmail1" >อื่นๆ</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value={{graduatedForm.value.other}} formControlName='other'>
+                                            <input type="number" class="form-control" (change)="changeOther($event)" value={{graduatedForm.value.other}} formControlName='other'>
                                         </div>
                                 </div>
                             </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button (click)="updateGradueted()" class="btn btn-primary" [disabled]="graduatedForm.invalid">Submit</button>
+                            <button (click)="updateGradueted()" class="btn btn-primary" [disabled]="graduatedForm.invalid || warning1 || warning2 || warning3 || warning4 || warningOver100">Submit</button>
+                            <span *ngIf="warning1 || warning2 || warning3 || warning4" style="margin-left: 2rem;color: red;">*ต้องเป็นจำนวนร้อยละ</span>
+                            <span *ngIf="warningOver100" style="margin-left: 2rem;color: red;">*อัตราส่วนไม่ครบ 100 %</span>
                         </div>
                         <!-- /.card-footer -->
                     </div>

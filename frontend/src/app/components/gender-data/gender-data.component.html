@@ -94,26 +94,27 @@
                                 <div class="col-md-2">
                                     <label for="exampleInputEmail1" >นักศึกษาชาย</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" (change)="addTotalMale($event)" formControlName='male'>
+                                            <input type="number" class="form-control" (change)="addTotalMale($event)" formControlName='male'>
                                         </div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="exampleInputEmail1" >นักศึกษาหญิง</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" (change)="addTotalFemale($event)" formControlName='female'>
+                                            <input type="number" class="form-control" (change)="addTotalFemale($event)" formControlName='female'>
                                         </div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="exampleInputEmail1" >รวม</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value={{genderForm.value.total}} disabled>
+                                            <input type="number" class="form-control" value={{genderForm.value.total}} disabled>
                                         </div>
                                 </div>
                             </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button (click)="addData()" class="btn btn-primary"  [disabled]="genderForm.invalid">Submit</button>
+                            <button (click)="addData()" class="btn btn-primary"  [disabled]="genderForm.invalid || warningMale || warningFemale">Submit</button>
+                            <span *ngIf="warningMale || warningFemale " style="margin-left: 2rem;color: red;">*จำนวนคนติดลบไม่ได้</span>
                         </div>
                         <!-- /.card-footer -->
                     </div>
@@ -144,26 +145,27 @@
                                 <div class="col-md-2">
                                     <label for="exampleInputEmail1">นักศึกษาชาย</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" (change)="addTotalMale($event)" value={{genderForm.value.male}} formControlName='male'>
+                                            <input type="number" class="form-control" (change)="addTotalMale($event)" value={{genderForm.value.male}} formControlName='male'>
                                         </div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="exampleInputEmail1">นักศึกษาหญิง</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" (change)="addTotalFemale($event)" value={{genderForm.value.female}} formControlName='female'>
+                                            <input type="number" class="form-control" (change)="addTotalFemale($event)" value={{genderForm.value.female}} formControlName='female'>
                                         </div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="exampleInputEmail1" >รวม</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value={{genderForm.value.total}} disabled>
+                                            <input type="number" class="form-control" value={{genderForm.value.total}} disabled>
                                         </div>
                                 </div>
                             </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button (click)="updateGender()" class="btn btn-primary" [disabled]="genderForm.invalid">Submit</button>
+                            <button (click)="updateGender()" class="btn btn-primary" [disabled]="genderForm.invalid || warningMale || warningFemale">Submit</button>
+                            <span *ngIf="warningMale || warningFemale " style="margin-left: 2rem;color: red;">*จำนวนคนติดลบไม่ได้</span>
                         </div>
                         <!-- /.card-footer -->
                     </div>

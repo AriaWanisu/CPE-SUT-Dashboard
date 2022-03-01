@@ -1,15 +1,14 @@
-<div class="content-wrapper">
+<div class="content-wrapper" style="font-family: 'Prompt';">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>ChartJS</h1>
+                    <h1>Dashboard</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">ChartJS</li>
                     </ol>
                 </div>
             </div>
@@ -20,152 +19,70 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
-                    <!-- AREA CHART -->
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Area Chart</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
+                <div class="col-md-3">
+                    <!-- small card -->
+                    <div class="small-box bg-success">
+                        
+                        <div class="icon">
+                        <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="inner">
+                            <h3>{{thisyear}}</h3>
+                            <p>ปีการศึกษา</p>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <app-chart></app-chart>
-                        </div>
-                        <!-- /.card-body -->
+                        <a href="student/gender" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                        </a>
                     </div>
-                    <!-- /.card -->
-
-                    <!-- DONUT CHART -->
-                    <div class="card card-danger">
-                        <div class="card-header">
-                            <h3 class="card-title">Donut Chart</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="donutChart"
-                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-
-                    <!-- PIE CHART -->
-                    <div class="card card-danger">
-                        <div class="card-header">
-                            <h3 class="card-title">Pie Chart</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="pieChart"
-                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-
                 </div>
-                <!-- /.col (LEFT) -->
-                <div class="col-md-6">
-                    <!-- LINE CHART -->
-                    <div class="card card-info">
-                        <div class="card-header">
-                            <h3 class="card-title">Line Chart</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
+                <div class="col-md-3">
+                    <!-- small card -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                        <h3>{{total}}</h3>
+                        <p>นักศึกษาทั้งหมด</p>
                         </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="lineChart"
-                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                            </div>
+                        <div class="icon">
+                        <i class="fas fa-user"></i>
                         </div>
-                        <!-- /.card-body -->
+                        <a href="student/general" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                        </a>
                     </div>
-                    <!-- /.card -->
-
-                    <!-- BAR CHART -->
-                    <div class="card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">Bar Chart</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="barChart"
-                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-
-                    <!-- STACKED BAR CHART -->
-                    <div class="card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">Stacked Bar Chart</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="stackedBarChart"
-                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-
                 </div>
-                <!-- /.col (RIGHT) -->
+                <div class="col-md-3">
+                    <!-- small card -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                        <h3>{{male}}</h3>
+                        <p>นักศึกษาชาย</p>
+                        </div>
+                        <div class="icon">
+                        <i class="fas fa-mars"></i>
+                        </div>
+                        <a href="student/gender" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!-- small card -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                        <h3>{{female}}</h3>
+                        <p>นักศึกษาหญิง</p>
+                        </div>
+                        <div class="icon">
+                        <i class="fas fa-venus"></i>
+                        </div>
+                        <a href="student/gender" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>

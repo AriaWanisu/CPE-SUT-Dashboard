@@ -101,44 +101,45 @@
                                 <div class="col-md-1">
                                     <label for="exampleInputEmail1" >ปี 1</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" (change)="addTotal1($event)" formControlName='year1'>
+                                            <input type="number" class="form-control" (change)="addTotal1($event)" formControlName='year1'>
                                         </div>
                                 </div>
                                 <div class="col-md-1">
                                     <label for="exampleInputEmail1" >ปี 2</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" (change)="addTotal2($event)" formControlName='year2'>
+                                            <input type="number" class="form-control" (change)="addTotal2($event)" formControlName='year2'>
                                         </div>
                                 </div>
                                 <div class="col-md-1">
                                     <label for="exampleInputEmail1" >ปี 3</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" (change)="addTotal3($event)" formControlName='year3'>
+                                            <input type="number" class="form-control" (change)="addTotal3($event)" formControlName='year3'>
                                         </div>
                                 </div>
                                 <div class="col-md-1">
                                     <label for="exampleInputEmail1" >ปี 4</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" (change)="addTotal4($event)" formControlName='year4'>
+                                            <input type="number" class="form-control" (change)="addTotal4($event)" formControlName='year4'>
                                         </div>
                                 </div>
                                 <div class="col-md-1">
                                     <label for="exampleInputEmail1" >ปี 5 ขึ้นไป</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" (change)="addTotal5($event)" formControlName='year5up'>
+                                            <input type="number" class="form-control" (change)="addTotal5($event)" formControlName='year5up'>
                                         </div>
                                 </div>
                                 <div class="col-md-1">
                                     <label for="exampleInputEmail1" >รวม</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value={{StudentForm.value.total}} disabled>
+                                            <input type="number" class="form-control" value={{StudentForm.value.total}} disabled>
                                         </div>
                                 </div>
                             </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button (click)="addData()" class="btn btn-primary"  [disabled]="StudentForm.invalid">Submit</button>
+                            <button (click)="addData()" class="btn btn-primary"  [disabled]="StudentForm.invalid || warning1 || warning2 || warning3 || warning4 || warning5">Submit</button>
+                            <span *ngIf=" warning1 || warning2 || warning3 || warning4 || warning5 " style="margin-left: 2rem;color: red;">*จำนวนคนติดลบไม่ได้</span>
                         </div>
                         <!-- /.card-footer -->
                     </div>
@@ -151,7 +152,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-info" *ngIf="isEdit">
-                        <div class="card-header"><h3 class="card-title">ก้ไขข้อมูล</h3></div>
+                        <div class="card-header"><h3 class="card-title">แก้ไขข้อมูล</h3></div>
                         <div class="card-body" [formGroup]="StudentForm">
                             <div class='row'>
                                 <div class="col-md-2">
@@ -206,7 +207,8 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button (click)="updateStudent()" class="btn btn-primary" [disabled]="StudentForm.invalid">Submit</button>
+                            <button (click)="updateStudent()" class="btn btn-primary" [disabled]="StudentForm.invalid || warning1 || warning2 || warning3 || warning4 || warning5">Submit</button>
+                            <span *ngIf=" warning1 || warning2 || warning3 || warning4 || warning5 " style="margin-left: 2rem;color: red;">*จำนวนคนติดลบไม่ได้</span>
                         </div>
                         <!-- /.card-footer -->
                     </div>

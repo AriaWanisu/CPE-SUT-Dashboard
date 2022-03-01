@@ -105,7 +105,7 @@
                                 <p>ผลประเมินการสอนผู้สอน</p>
                             </a>
                         </li>
-                        <li class="nav-item" *ngIf="isAdmin">
+                        <!-- <li class="nav-item" *ngIf="isAdmin">
                             <a href="pages/charts/flot.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>only admin</p>
@@ -122,7 +122,7 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>uPlot</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 <li class="nav-item menu-open" *ngIf="isAdmin">
@@ -153,6 +153,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a routerLink="admin/work" class="nav-link" routerLinkActive="active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>จัดการข้อมูลการได้งานทำ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="admin/score" class="nav-link" routerLinkActive="active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>จัดการข้อมูลผลประเมินการสอน</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a routerLink="admin/analysis" class="nav-link" routerLinkActive="active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>จัดการบทวิเคราะห์</p>
@@ -160,7 +172,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
@@ -598,8 +610,8 @@
                         <i class="nav-icon far fa-circle text-info"></i>
                         <p>Informational</p>
                     </a>
-                </li>
-            </ul>
+                </li>-->
+            </ul> 
         </nav>
         <!-- /.sidebar-menu -->
     </div>

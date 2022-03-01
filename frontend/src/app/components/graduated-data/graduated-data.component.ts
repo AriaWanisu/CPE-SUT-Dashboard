@@ -13,6 +13,12 @@ export class GraduatedDataComponent implements OnInit {
 
   gradueted: any;
   token: any;
+
+  warning1: boolean = false;
+  warning2: boolean = false;
+  warning3: boolean = false;
+  warning4: boolean = false;
+  warningOver100: boolean = false;
   
   isAdd: boolean = false;
   isEdit: boolean = false;
@@ -107,6 +113,62 @@ export class GraduatedDataComponent implements OnInit {
         console.log(err);
         alert('ลบข้อมูลไม่สำเร็จ!');
       });
+  }
+
+  changeEarly(n){
+    this.early = parseInt(n.target.value);
+    if(n.target.value < 0 || n.target.value > 100 ){
+      this.warning1 = true;
+    } else {
+      this.warning1 = false;
+      if(this.normal + this.early + this.over + this.other != 100){
+        this.warningOver100 = true;
+      } else {
+        this.warningOver100 = false;
+      }
+    }
+  }
+  
+  changeNormal(n){
+    this.normal = parseInt(n.target.value);
+    if(n.target.value < 0 || n.target.value > 100){
+      this.warning2 = true;
+    } else {
+      this.warning2 = false;
+      if(this.normal + this.early + this.over + this.other != 100){
+        this.warningOver100 = true;
+      } else {
+        this.warningOver100 = false;
+      }
+    }
+  }
+
+  changeOver(n){
+    this.over = parseInt(n.target.value);
+    if(n.target.value < 0 || n.target.value > 100 ){
+      this.warning3 = true;
+    } else {
+      this.warning3 = false;
+      if(this.normal + this.early + this.over + this.other != 100){
+        this.warningOver100 = true;
+      } else {
+        this.warningOver100 = false;
+      }
+    }
+  }
+
+  changeOther(n){
+    this.other = parseInt(n.target.value);
+    if(n.target.value < 0 || n.target.value > 100 ){
+        this.warning4 = true;
+    } else {
+      this.warning4 = false;
+      if(this.normal + this.early + this.over + this.other != 100){
+        this.warningOver100 = true;
+      } else {
+        this.warningOver100 = false;
+      }
+    }
   }
 
 }

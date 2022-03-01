@@ -14,6 +14,9 @@ export class GenderDataComponent implements OnInit {
 
   genders: any;
   token: any;
+
+  warningMale: boolean = false;
+  warningFemale: boolean = false;
   
   isAdd: boolean = false;
   isEdit: boolean = false;
@@ -76,6 +79,11 @@ export class GenderDataComponent implements OnInit {
     this.total = this.total - old + num ;
     this.male = num;
     this.genderForm.patchValue({ total: this.total});
+    if(this.male < 0){
+      this.warningMale = true;
+    } else { 
+      this.warningMale = false
+    }
   }
 
   addTotalFemale(n){
@@ -84,6 +92,11 @@ export class GenderDataComponent implements OnInit {
     this.total = this.total - old + num ;
     this.female = num;
     this.genderForm.patchValue({ total: this.total});
+    if(this.female < 0){
+      this.warningFemale = true;
+    } else { 
+      this.warningFemale = false;
+    }
   }
 
   addData(){

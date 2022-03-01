@@ -56,7 +56,7 @@
                 <!-- /. end chart 2 -->
 
                  <!-- /. chart 3 จำนวนนักศึกษา -->
-                 <div class="col-md-6">
+                 <div class="col-md-6" >
                     <div class="card card-warning">
                         <div class="card-header">
                             <h3 class="card-title">ผลประเมินการสอนมหาวิทยาลัย</h3>
@@ -71,6 +71,50 @@
                     <!-- /.card -->
                 </div>
                 <!-- /. end chart 3 -->
+
+                 <!-- /. chart 3 จำนวนนักศึกษา -->
+                 <div class="col-md-12" >
+                    <div class="card card-warning">
+                        <div class="card-header">
+                            <h3 class="card-title">ผลประเมินการสอนมหาวิทยาลัย</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="avg">{{ avgChart }}</canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /. end chart 3 -->
+
+                <!-- /. สรุป -->
+                <div class="col-md-12" >
+                    <div class="card card-warning">
+                        <div class="card-header">
+                            <h3 class="card-title">สรุป</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" (click)="openEdit()" *ngIf="isAdmin">
+                                    <ion-icon name="pencil-sharp" style="color: white;font-size: 18px;"></ion-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body" [formGroup]="AnalysisForm" >
+                            <span [innerHTML]="analysis.text"></span>
+                            <h3 *ngIf="edit">แก้ไข</h3>
+                            <div [ngxSummernote]="config" formControlName='text' *ngIf="edit" ></div>
+                            <button type="button" class="btn btn-primary" [disabled]="text.invalid" (click)="editAnalysis()" *ngIf="edit" >submit</button>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div style="text-align: end;">writted by {{writer.firstName}} {{writer.lastName}}</div>
+                        </div>
+                    </div>
+                   
+                    <!-- /.card -->
+                </div>
+                <!-- /. end สรุป -->
             </div>
         </div>
     </section>

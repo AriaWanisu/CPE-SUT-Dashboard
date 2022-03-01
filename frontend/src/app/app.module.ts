@@ -33,6 +33,8 @@ import { AnalysisComponent } from './components/analysis/analysis.component';
 import { StudentDataComponent } from './components/student-data/student-data.component';
 import { GenderDataComponent } from './components/gender-data/gender-data.component';
 import { GraduatedDataComponent } from './components/graduated-data/graduated-data.component';
+import { WorkDataComponent } from './components/work-data/work-data.component';
+import { ScoreDataComponent } from './components/score-data/score-data.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { GraduatedDataComponent } from './components/graduated-data/graduated-da
     StudentDataComponent,
     GenderDataComponent,
     GraduatedDataComponent,
+    WorkDataComponent,
+    ScoreDataComponent,
   ],
   imports: [
     BrowserModule,

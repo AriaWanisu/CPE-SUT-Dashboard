@@ -17,6 +17,12 @@ export class StudentDataComponent implements OnInit {
 
   students: any;
   token: any;
+
+  warning1: boolean = false;
+  warning2: boolean = false;
+  warning3: boolean = false;
+  warning4: boolean = false;
+  warning5: boolean = false;
   
   isAdd: boolean = false;
   isEdit: boolean = false;
@@ -57,6 +63,8 @@ export class StudentDataComponent implements OnInit {
   }
 
   openAdd(){
+    console.log(this.StudentForm.value);
+    
     this.isAdd = !this.isAdd;
     this.isEdit = false;
     this.StudentForm.reset();
@@ -99,6 +107,11 @@ export class StudentDataComponent implements OnInit {
     this.year1 = num;
     this.StudentForm.patchValue({ total: this.total});
     console.log(this.StudentForm.value.total);
+    if(this.year1 < 0){
+      this.warning1 = true;
+    } else {
+      this.warning1 = false;
+    }
   }
 
   addTotal2(n){
@@ -107,6 +120,11 @@ export class StudentDataComponent implements OnInit {
     this.total = this.total - old + num ;
     this.year2 = num;
     this.StudentForm.patchValue({ total: this.total});
+    if(this.year2 < 0){
+      this.warning2 = true;
+    } else {
+      this.warning2 = false;
+    }
   }
 
   addTotal3(n){
@@ -115,6 +133,11 @@ export class StudentDataComponent implements OnInit {
     this.total = this.total - old + num ;
     this.year3 = num;
     this.StudentForm.patchValue({ total: this.total});
+    if(this.year3 < 0){
+      this.warning3 = true;
+    } else {
+      this.warning3 = false;
+    }
   }
 
   addTotal4(n){
@@ -127,6 +150,11 @@ export class StudentDataComponent implements OnInit {
     this.year4 = num;
     this.StudentForm.patchValue({ total: this.total});
     console.log(this.StudentForm.value.total);
+    if(this.year4 < 0){
+      this.warning4 = true;
+    } else {
+      this.warning4 = false;
+    }
   }
 
   addTotal5(n){
@@ -139,6 +167,11 @@ export class StudentDataComponent implements OnInit {
     this.year5up = num;
     this.StudentForm.patchValue({ total: this.total});
     console.log(this.StudentForm.value.total);
+    if(this.year5up < 0){
+      this.warning5 = true;
+    } else {
+      this.warning5 = false;
+    }
   }
 
 

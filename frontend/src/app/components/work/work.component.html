@@ -45,13 +45,22 @@
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">สรุป</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <span>กาลครั้งหนึ่งนานมาแล้ว</span>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" (click)="openEdit()" *ngIf="isAdmin">
+                                    <ion-icon name="pencil-sharp" style="color: white;font-size: 18px;"></ion-icon>
+                                </button>
                             </div>
                         </div>
+                        <div class="card-body" [formGroup]="workAnalysisForm" >
+                            <span [innerHTML]="workAnalysis.text"></span>
+                            <h3 *ngIf="edit">แก้ไข</h3>
+                            <div [ngxSummernote]="config" formControlName='text' *ngIf="edit" ></div>
+                            <button type="button" class="btn btn-primary" [disabled]="text1.invalid" (click)="editWorkAnalysis()" *ngIf="edit" >submit</button>
+                        </div>
                         <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div style="text-align: end;">writted by {{writter.firstName}} {{writter.lastName}}</div>
+                        </div>
                     </div>
                 </div>
                 <!-- สรุป chart 1 -->
@@ -87,6 +96,33 @@
                     </div>
                 </div>
                 <!-- จบ chart 3 -->
+
+                <!-- สรุป chart 2 & 3 -->
+                 <div class="col-md-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">สรุป</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" (click)="openEditSR()" *ngIf="isAdmin">
+                                    <ion-icon name="pencil-sharp" style="color: white;font-size: 18px;"></ion-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body" [formGroup]="salaryRelevanceAnalysisForm" >
+                            <span [innerHTML]="salaryRelevanceAnalysis.text"></span>
+                            <h3 *ngIf="edit">แก้ไข</h3>
+                            <div [ngxSummernote]="config" formControlName='text' *ngIf="editSR" ></div>
+                            <button type="button" class="btn btn-primary" [disabled]="text2.invalid" (click)="editWorkAnalysis()" *ngIf="editSR" >submit</button>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div style="text-align: end;">writted by {{writtersalaryRelevance.firstName}} {{writtersalaryRelevance.lastName}}</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- สรุป chart 1 -->
+                
+                <!-- /.สรุป chart 2 & 3 -->
 
             </div>
             

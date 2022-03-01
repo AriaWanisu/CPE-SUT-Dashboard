@@ -27,14 +27,16 @@ import { AnalysisComponent } from './components/analysis/analysis.component';
 import { StudentDataComponent } from './components/student-data/student-data.component';
 import { GenderDataComponent } from './components/gender-data/gender-data.component';
 import { GraduatedDataComponent } from './components/graduated-data/graduated-data.component';
+import { WorkDataComponent } from './components/work-data/work-data.component';
+import { ScoreDataComponent } from './components/score-data/score-data.component';
 
 const routes: Routes = [
   // general
   {path: ' ' , redirectTo: '/home'},
-  {path: 'home' , component: HomeComponent},
+  {path: 'home' , component: DashboardComponent, canActivate: [AuthGuardService]},
   {path: 'login', component: LoginComponent, canActivate: [LoginGuardService]},
-  {path: 'admin_login', component: AdminLoginComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: 'admin_login', component: AdminLoginComponent, canActivate: [LoginGuardService]},
+  {path: 'register', component: RegisterComponent, canActivate: [LoginGuardService]},
 
   // dashboard
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
@@ -54,6 +56,8 @@ const routes: Routes = [
   {path: 'admin/student', component: StudentDataComponent , canActivate: [AdminGuardService]},
   {path: 'admin/gender', component: GenderDataComponent , canActivate: [AdminGuardService]},
   {path: 'admin/graduated', component: GraduatedDataComponent , canActivate: [AdminGuardService]},
+  {path: 'admin/work', component: WorkDataComponent , canActivate: [AdminGuardService]},
+  {path: 'admin/score', component: ScoreDataComponent , canActivate: [AdminGuardService]},
 
   // etc.
   {path: 'chart', component: ChartComponent},

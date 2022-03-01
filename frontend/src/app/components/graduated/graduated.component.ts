@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { GraduetedService  } from 'src/app/services/gradueted.service';
 import { Chart } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { AnalysisService } from 'src/app/services/analysis.service';
+import { UserService } from 'src/app/services/user.service';
+import { LocalStorageService } from 'angular-web-storage';
 
 @Component({
   selector: 'app-graduated',
@@ -9,6 +14,8 @@ import { Chart } from 'chart.js';
 })
 export class GraduatedComponent implements OnInit {
 
+  token: any;
+
   gdata: any;
   avgChart: any;
   compareChart: any;
@@ -16,13 +23,76 @@ export class GraduatedComponent implements OnInit {
   chart: any;
   avg: any;
 
-  constructor(private gs: GraduetedService) {
+  isAdmin: boolean = false;
+
+  edit: boolean = false;
+  editavg: boolean = false;
+
+  config: any;
+  writter: any;
+  writteravg: any;
+  user: any;
+
+  graduatedAnalysis: any;
+  avgAnalysis: any;
+
+  
+  graduatedForm = new FormGroup({
+    text: new FormControl('',[Validators.required]),
+    editor: new FormControl('',[Validators.required]),
+  });
+  
+  constructor(private gs: GraduetedService, public local: LocalStorageService, private as: AnalysisService,private us: UserService) {
       this.onLoading();
    }
 
   ngOnInit(): void {
+    this.token = this.local.get('user').token;
+    //check role
+    if(this.local.get('user').result.role == "Admin"){
+      this.isAdmin = true;
+    }
+
+    this.us.getUser().subscribe(
+      (data) => {
+        this.user = data._id;
+      },
+      (err) => {
+        console.log("can't get user");
+      }
+    );
+
+    this.as.getAnalysis("graduated",this.token).subscribe(
+      (res) => {
+        this.graduatedAnalysis = res;
+        this.us.getUserById(res.editor).subscribe(
+          (data) => {
+            this.writter = data;
+          },
+          (err) => {
+            console.log("can't get writter");
+          }
+        );  
+        console.log(this.writter);
+      }
+    );
+    
+    //summernote config
+    this.config = {
+      placeholder: '',
+      tabsize: 2,
+      height: '200px',
+      toolbar: [
+          ['misc', ['codeview', 'undo', 'redo']],
+          ['style', ['bold', 'italic', 'underline', 'clear']],
+          ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+          ['para', ['style', 'ul', 'ol']],
+          ['insert', ['table', 'hr']]
+      ],
+    }
+
+
     this.gs.getGraduated().subscribe(res => {
-      console.log("ssss");
       
       let early = res.map(res => res.early);
       let normal = res.map(res => res.normal);
@@ -76,8 +146,20 @@ export class GraduatedComponent implements OnInit {
             "ลาออก/ให้ออก/เสียชีวิต"
           ],
           datasets: [{
-            data: [sumEarly/n,sumNormal/n,sumOver/n,sumOther/n]
+            data: [(sumEarly/n).toFixed(2),(sumNormal/n).toFixed(2),(sumOver/n).toFixed(2),(sumOther/n).toFixed(2)]
           }]
+        },
+        plugins: [ChartDataLabels],
+        options: {
+          plugins: {
+            datalabels: {
+              formatter: (value, context) => {
+                console.log(context);
+                
+                return  value
+              }
+            }
+          }
         }        
       })
 
@@ -130,5 +212,32 @@ export class GraduatedComponent implements OnInit {
       console.log(error);
     }
   }
+
+  openEdit(){
+    this.edit = !this.edit
+  }
+
+  editAnalysis(){
+    this.graduatedForm.value.editor = this.user;
+
+    this.as.editAnalysis(this.graduatedAnalysis.index,this.token,this.graduatedForm.value)
+    .subscribe( data => {
+        if(data.status == true){
+          alert(data.data.message)
+          window.location.reload();
+      }else{
+        alert('Address incorrect!');
+      }
+    },
+    err => {
+      console.log(err);
+      alert('Error!!');
+    });
+  }
+
+  get text() {
+    return this.graduatedForm.get('text');
+  }
+
 
 }

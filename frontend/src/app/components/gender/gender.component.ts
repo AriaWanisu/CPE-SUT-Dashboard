@@ -118,18 +118,6 @@ export class GenderComponent implements OnInit {
                 data: totalF,
                 order: 1
               },
-              {
-                label: 'นักศึกษาชาย',
-                data: totalM,
-                type: "line",
-                order: 0
-              },
-              {
-                label: "นักศึกษาหญิง",
-                data: totalF,
-                type: "line",
-                order: 0
-              }
             ]
           }
         })

@@ -4,6 +4,7 @@ var expressApp = expressFunction();
 const router = expressFunction.Router();
 const authorization = require("../config/authorize")
 var Schema = require('mongoose').Schema;
+var uniqueValidator = require('mongoose-unique-validator');
 
 var Schema = require('mongoose').Schema;
 const StudentSchema = Schema({

@@ -95,11 +95,11 @@ router.route('/graduated').get((req, res) => {
 
 router.route('/graduated').post(authorization, (req, res) => {
     const playload = {
-        year: req.body.year,
-        early: req.body.early,
+        year:   req.body.year,
+        early:  req.body.early,
         normal: req.body.normal,
-        over: req.body.over,
-        other: req.body.other
+        over:   req.body.over,
+        other:  req.body.other
     }
     console.log(playload);
     insertGraduated(playload).then(result => {
