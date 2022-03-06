@@ -64,8 +64,7 @@ export class SubjectComponent implements OnInit {
           }
         }
         this.term = thisTerm;
-      })
-      
+      }) 
   }
 
   selectTerm(term){
@@ -96,7 +95,7 @@ export class SubjectComponent implements OnInit {
         this.gpaPie = new Chart('pie', {
           type: 'pie',
           data: {
-            labels: ["A","B+","B","C+","C","D+","D","D+","F","P","S","U"],
+            labels: ["A","B+","B","C+","C","D+","D","F","P","S","U"],
             datasets: [{ 
               data: [ 
                 this.oneSubject.a,
@@ -112,13 +111,13 @@ export class SubjectComponent implements OnInit {
                 this.oneSubject.u
               ]
             }],
-          }
+          },
         })
 
         this.gpaChart = new Chart('gpa', {
           type: 'bar',
           data: {
-            labels: ["A","B+","B","C+","C","D+","D","D+","F","P","S","U"],
+            labels: ["A","B+","B","C+","C","D+","D","F","P","S","U"],
             datasets: [{ 
               label: "จำนวนนักศึกษา",
               data: [ 

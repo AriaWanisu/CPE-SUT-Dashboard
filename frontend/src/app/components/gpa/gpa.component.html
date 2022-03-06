@@ -1,0 +1,253 @@
+<div class="content-wrapper"  style="font-family: 'Prompt';" >
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>การกระจายเกรดต่างๆ</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item active">Subject</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <!-- select part -->
+                <div class="col-md-12">
+                    <!-- card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">เลือกรายวิชา</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row"> 
+                                    <div class="col-md-9">
+                                        <form [formGroup]='targetSubjectForm'>
+                                        <ngx-select (change)="selectSubject()" (select)="selectSubject()" placeholder="เลือกรายวิชา" formControlName="subject" [items]="subjectList" [(ngModel)]="subjectList._id">
+                                            <!-- <option selected>เลือกวิชา</option>
+                                            <option *ngFor = "let subject of subjectList; index as i" value="{{subject}}">{{subject}}</option> -->
+                                        </ngx-select>
+                                    </form>
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.select part -->
+
+                <!-- chart part -->
+                <div class="col-md-7">
+                     <!-- card -->
+                     <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">กราฟ gpa เฉลี่ย วิชา&nbsp;&nbsp;</h3>
+                            <h3 class="card-title" *ngIf="targetSubjectForm.value.subject"> {{targetSubjectForm.value.subject}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id='avgChart'>{{ avgChart }}</canvas>
+                            </div>
+                            <div class="table-responsive" style="margin-top: 2rem;">
+                                <table class="card-text table table-striped table-inverse">
+                                    <thead class="thead-inverse">
+                                        <tr >
+                                            <th *ngFor="let item of targetSubject; index as i">{{item.year}}-{{ item.term}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr >
+                                            <td *ngFor="let item of targetSubject; index as i">{{item.avg_gpa}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.chart part -->
+
+                <div class="col-md-5">
+                    <!-- card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">กราฟการกระจายเกรด&nbsp;</h3>
+                            <h3 class="card-title" *ngIf="oneSubject"> ปีการศึกษา {{targetSubjectForm.value.year}}&nbsp;</h3>
+                            <h3 class="card-title" *ngIf="oneSubject && targetSubjectForm.value.term != 'เลือกเทอม'"> เทอม {{targetSubjectForm.value.term}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <form [formGroup]='targetSubjectForm'>
+                                <div class="row">
+                                    <div class="col-md-6">  
+                                        <select class="form-control" (change)="selectYear($event)" formControlName="year">
+                                            <option selected>เลือกปีการศึกษา</option>
+                                            <option *ngFor = "let years of year; index as i" value="{{year[i]}}">{{year[i]}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select class="form-control" (change)="selectTerm()" formControlName="term">
+                                            <option selected>เลือกเทอม</option>
+                                            <option *ngFor = "let terms of term; index as i" value="{{term[i]}}">{{term[i]}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 2rem;">
+                                        <div class="chart">
+                                            <canvas id='gradeHistrogram'>{{ gradeHistrogram }}</canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                     <!-- card -->
+                     <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">กราฟเทียบจำนวนคนที่ได้เกรด A และ F วิชา&nbsp;&nbsp;</h3>
+                            <h3 class="card-title" *ngIf="targetSubjectForm.value.subject"> {{targetSubjectForm.value.subject}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id='getAChart'>{{ getAChart }}</canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+
+                
+                <div class="col-md-12" style="margin-top: 2rem;" *ngIf="oneSubject">
+                     <!-- card -->
+                     <div class="card dark-mode">
+                        <div class="card-header">
+                            <h3 class="card-title" *ngIf="targetSubjectForm.value.subject">ตารางข้อมูลรายวิชา {{targetSubjectForm.value.subject}} &nbsp;</h3>
+                            <h3 class="card-title" *ngIf="oneSubject"> ปีการศึกษา {{targetSubjectForm.value.year}}&nbsp;</h3>
+                            <h3 class="card-title" *ngIf="oneSubject && targetSubjectForm.value.term != 'เลือกเทอม'"> เทอม {{targetSubjectForm.value.term}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table m-0">
+                                <thead class="thead-inverse">
+                                    <tr>
+                                        <th>A</th>
+                                        <th>B+</th>
+                                        <th>B</th>
+                                        <th>C+</th>
+                                        <th>C</th>
+                                        <th>D+</th>
+                                        <th>D</th>
+                                        <th>F</th>
+                                        <th>P</th>
+                                        <th>S</th>
+                                        <th>U</th>
+                                        <th>รวม</th>
+                                        <th>GPA เฉลี่ย</th>
+                                        <th>STDEV</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{oneSubject.a}}</td>
+                                        <td>{{oneSubject.b_plus}}</td>
+                                        <td>{{oneSubject.b}}</td>
+                                        <td>{{oneSubject.c_plus}}</td>
+                                        <td>{{oneSubject.c}}</td>
+                                        <td>{{oneSubject.d_plus}}</td>
+                                        <td>{{oneSubject.d}}</td>
+                                        <td>{{oneSubject.f}}</td>
+                                        <td>{{oneSubject.p}}</td>
+                                        <td>{{oneSubject.s}}</td>
+                                        <td>{{oneSubject.u}}</td>
+                                        <td>{{oneSubject.total}}</td>
+                                        <td>{{oneSubject.avg_gpa}}</td>
+                                        <td>{{oneSubject.stdev}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+
+                <!-- table part -->
+                <div class="col-md-12">
+                    <!-- card -->
+                    <div class="card">
+                       <div class="card-header">
+                           <h3 class="card-title">ตารางข้อมูลรายวิชา &nbsp;&nbsp;</h3>
+                           <h3 class="card-title" *ngIf="targetSubjectForm.value.subject">{{targetSubjectForm.value.subject}} &nbsp;</h3>
+                       </div>
+                       <div class="card-body">
+                        <table class="table table-striped table-inverse">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th>ปีการศึกษา</th>
+                                    <th>เทอม</th>
+                                    <th>รายวิชา</th>
+                                    <th>A</th>
+                                    <th>B+</th>
+                                    <th>B</th>
+                                    <th>C+</th>
+                                    <th>C</th>
+                                    <th>D+</th>
+                                    <th>D</th>
+                                    <th>F</th>
+                                    <th>P</th>
+                                    <th>S</th>
+                                    <th>U</th>
+                                    <th>รวม</th>
+                                    <th>GPA เฉลี่ย</th>
+                                    <th>STDEV</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of targetSubject; index as i">
+                                    <td scope="row">{{item.year}}</td>
+                                    <td>{{item.term}}</td>
+                                    <td>{{item.subject}}</td>
+                                    <td>{{item.a}}</td>
+                                    <td>{{item.b_plus}}</td>
+                                    <td>{{item.b}}</td>
+                                    <td>{{item.c_plus}}</td>
+                                    <td>{{item.c}}</td>
+                                    <td>{{item.d_plus}}</td>
+                                    <td>{{item.d}}</td>
+                                    <td>{{item.f}}</td>
+                                    <td>{{item.p}}</td>
+                                    <td>{{item.s}}</td>
+                                    <td>{{item.u}}</td>
+                                    <td>{{item.total}}</td>
+                                    <td>{{item.avg_gpa}}</td>
+                                    <td>{{item.stdev}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                       </div>
+                       <!-- /.card-body -->
+                   </div>
+                   <!-- /.card -->
+               </div>
+               <!-- /.table part -->
+            </div>
+            
+        </div>
+    </section>
+</div>

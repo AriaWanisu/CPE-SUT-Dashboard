@@ -1,0 +1,109 @@
+<div class="content-wrapper" style="font-family: 'Prompt';">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>ข้อมูลรายวิชา</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Table</a></li>
+                <li class="breadcrumb-item active">Subject</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- ./ header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">เลือกรายวิชา</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row"> 
+                                    <div class="col-md-9">
+                                        <form [formGroup]='targetSubject'>
+                                        <ngx-select (change)="selectSubject()" (select)="selectSubject()" placeholder="เลือกรายวิชา" formControlName="subject" [items]="subjectList" [(ngModel)]="subjectList._id">
+                                        </ngx-select>
+                                    </form>
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- ./input -->
+
+            <!-- ส่วนตารางข้อมูล -->
+            <div class="row" *ngIf="table">
+                <div class="col-md-12">
+                    <div class="card card-success">
+                        <div class="card-body">
+                            <table class="table table-striped table-inverse">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>ปีการศึกษา</th>
+                                            <th>เทอม</th>
+                                            <th>รายวิชา</th>
+                                            <th>A</th>
+                                            <th>B+</th>
+                                            <th>B</th>
+                                            <th>C+</th>
+                                            <th>C</th>
+                                            <th>D+</th>
+                                            <th>D</th>
+                                            <th>F</th>
+                                            <th>P</th>
+                                            <th>S</th>
+                                            <th>U</th>
+                                            <th>รวม</th>
+                                            <th>GPA เฉลี่ย</th>
+                                            <th>STDEV</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of subjectTable; index as i">
+                                            <td scope="row">{{item.year}}</td>
+                                            <td>{{item.term}}</td>
+                                            <td>{{item.subject}}</td>
+                                            <td>{{item.a}}</td>
+                                            <td>{{item.b_plus}}</td>
+                                            <td>{{item.b}}</td>
+                                            <td>{{item.c_plus}}</td>
+                                            <td>{{item.c}}</td>
+                                            <td>{{item.d_plus}}</td>
+                                            <td>{{item.d}}</td>
+                                            <td>{{item.f}}</td>
+                                            <td>{{item.p}}</td>
+                                            <td>{{item.s}}</td>
+                                            <td>{{item.u}}</td>
+                                            <td>{{item.total}}</td>
+                                            <td>{{item.avg_gpa}}</td>
+                                            <td>{{item.stdev}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.table -->
+            
+            </div>
+
+        </div>
+    </section>
+    
+</div>

@@ -1,0 +1,69 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" style="font-family: 'Prompt';">
+    
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>ข้อมูลนักศึกษา</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Table</a></li>
+                <li class="breadcrumb-item active">Student</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- ./ header -->
+
+       <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- ส่วนตารางข้อมูล -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-success">
+                        <div class="card-body">
+                            <table class="table table-striped table-inverse">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>ปีการศึกษา</th>
+                                            <th>หลักสูตร</th>
+                                            <th>ปี 1</th>
+                                            <th>ปี 2</th>
+                                            <th>ปี 3</th>
+                                            <th>ปี 4</th>
+                                            <th>ปี 5 ขึ้นไป</th>
+                                            <th>รวม</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of students; index as i">
+                                            <td scope="row">{{item.term}}</td>
+                                            <td>{{item.course}}</td>
+                                            <td>{{item.year1}}</td>
+                                            <td>{{item.year2}}</td>
+                                            <td>{{item.year3}}</td>
+                                            <td>{{item.year4}}</td>
+                                            <td>{{item.year5up}}</td>
+                                            <td>{{item.total}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+    </section>
+    <!-- ./content -->
+
+</div>

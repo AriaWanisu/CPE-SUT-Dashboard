@@ -78,7 +78,7 @@ const deleteScore = (id) => {
             if(err){
                 reject(new err('err'))
             }else{
-                resolve({message: 'Graduated Delete'})
+                resolve({message: 'score Delete'})
             }
         });
     });

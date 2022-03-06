@@ -29,6 +29,16 @@ import { GenderDataComponent } from './components/gender-data/gender-data.compon
 import { GraduatedDataComponent } from './components/graduated-data/graduated-data.component';
 import { WorkDataComponent } from './components/work-data/work-data.component';
 import { ScoreDataComponent } from './components/score-data/score-data.component';
+import { GpaComponent } from './components/gpa/gpa.component';
+import { SubjectsDataComponent } from './components/subjects-data/subjects-data.component';
+
+//table components
+import { SubjectTableComponent } from './components/subject-table/subject-table.component';
+import { StudentTableComponent } from './components/student-table/student-table.component';
+import { WorkTableComponent } from './components/work-table/work-table.component';
+import { ScoreTableComponent } from './components/score-table/score-table.component';
+import { GenderTableComponent } from './components/gender-table/gender-table.component';
+import { GraduatedTableComponent } from './components/graduated-table/graduated-table.component';
 
 const routes: Routes = [
   // general
@@ -44,8 +54,17 @@ const routes: Routes = [
   {path: 'student/work', component: WorkComponent, canActivate: [AuthGuardService]},
   {path: 'student/gender', component: GenderComponent, canActivate: [AuthGuardService]},
   {path: 'student/graduated', component: GraduatedComponent , canActivate: [AuthGuardService]},
-  {path: 'subject/gpa', component: SubjectComponent , canActivate: [AuthGuardService]},
+  {path: 'subject/general', component: SubjectComponent , canActivate: [AuthGuardService]},
+  {path: 'subject/gpa', component: GpaComponent , canActivate: [AuthGuardService]},
   {path: 'score/teacher', component: ScoreComponent , canActivate: [AuthGuardService]},
+
+  // table
+  {path: 'table/student', component: StudentTableComponent, canActivate: [AuthGuardService]},
+  {path: 'table/work', component: WorkTableComponent, canActivate: [AuthGuardService]},
+  {path: 'table/gender', component: GenderTableComponent, canActivate: [AuthGuardService]},
+  {path: 'table/graduated', component: GraduatedTableComponent , canActivate: [AuthGuardService]},
+  {path: 'table/subject', component: SubjectTableComponent , canActivate: [AuthGuardService]},
+  {path: 'table/score', component: ScoreTableComponent , canActivate: [AuthGuardService]},
 
   // user control
   {path: 'user', component: UserComponent , canActivate: [AuthGuardService]},
@@ -58,6 +77,7 @@ const routes: Routes = [
   {path: 'admin/graduated', component: GraduatedDataComponent , canActivate: [AdminGuardService]},
   {path: 'admin/work', component: WorkDataComponent , canActivate: [AdminGuardService]},
   {path: 'admin/score', component: ScoreDataComponent , canActivate: [AdminGuardService]},
+  {path: 'admin/subjects', component: SubjectsDataComponent , canActivate: [AdminGuardService]},
 
   // etc.
   {path: 'chart', component: ChartComponent},

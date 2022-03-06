@@ -84,10 +84,9 @@ export class GraduatedComponent implements OnInit {
       height: '200px',
       toolbar: [
           ['misc', ['codeview', 'undo', 'redo']],
-          ['style', ['bold', 'italic', 'underline', 'clear']],
           ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
           ['para', ['style', 'ul', 'ol']],
-          ['insert', ['table', 'hr']]
+          ['insert', ['table', 'hr', ,'picture']]
       ],
     }
 

@@ -1,0 +1,79 @@
+<div class="content-wrapper" style="font-family: 'Prompt';">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>ข้อมูลการได้งาน</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Table</a></li>
+                <li class="breadcrumb-item active">Work</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- ./ header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- ส่วนตารางข้อมูล -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-success">
+                        <div class="card-body">
+                            <table class="table table-striped table-inverse">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>ปีการศึกษา</th>
+                                            <th>จำนวนบัณฑิตทั้งหมด</th>
+                                            <th>ตอบแบบสำรวจ</th>
+                                            <th>ตอบแบบสำรวจ (ร้อยละ)</th>
+                                            <th>ได้งานทำ</th>
+                                            <th>ได้งานทำ (ร้อยละ)</th>
+                                            <th>ยังไม่ได้ทำงาน</th>
+                                            <th>ยังไม่ได้ทำงาน (ร้อยละ)</th>
+                                            <th>ศึกษาต่อ</th>
+                                            <th>ศึกษาต่อ (ร้อยละ)</th>
+                                            <th>ได้งานทันที</th>
+                                            <th>ได้งานทันที (ร้อยละ)</th>
+                                            <th>เงินเดือนเฉลี่ย</th>
+                                            <th>การได้งานตรงหลักสูตร (ร้อยละ)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of works; index as i">
+                                            <td scope="row">{{item.year}}</td>
+                                            <td>{{item.total}} คน</td>
+                                            <td>{{item.answer}} คน</td>
+                                            <td>{{item.percentAnswer}}</td>
+                                            <td>{{item.getWork}} คน</td>
+                                            <td>{{item.percentGetWork}}</td>
+                                            <td>{{item.notWork}} คน</td>
+                                            <td>{{item.percentNotWork}}</td>
+                                            <td>{{item.study}} คน</td>
+                                            <td>{{item.pecrentStudy}}</td>
+                                            <td>{{item.workEarly}} คน</td>
+                                            <td>{{item.percentWorkEarly}}</td>
+                                            <td>{{item.avgSalary}} บาท</td>
+                                            <td>{{item.relevance}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+    </section>
+
+</div>
+

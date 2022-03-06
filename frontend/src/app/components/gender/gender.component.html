@@ -53,38 +53,52 @@
             </div>
             <!-- end 1 row -->
 
+            <!-- CHART 3 -->
             <div class="row">
                 <div class="col-md-6">
-                    <!-- CHART 3 -->
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">กราฟแสดงจำนวนนักศึกษาแยกเพศตั้งแต่ปี {{gender[0].term}} - {{gender[gender.length-1].term}}</h3>
+                            <h3 class="card-title">กราฟแสดงจำนวนนักศึกษาแยกเพศตั้งแต่ปี {{gender[0].term}} - {{gender[gender.length-1].term}} แยกตามหลักสูตร</h3>
                         </div>
                         <div class="card-body">
                             <div class="chart">
-                                <canvas id="oldChart"> {{ oldChart }}</canvas>
+                                <canvas id="courseChart"> {{ courseChart }}</canvas>
                             </div>
                         </div>
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
                 </div>
-                <div class="col-md-6">
-                    <!-- CHART 4 -->
+                <!-- /. CHART 3 -->
+
+                 <!-- anlysis -->
+                 <div class="col-md-6">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">กราฟแสดงจำนวนนักศึกษาแยกเพศตั้งแต่ปี {{gender[0].term}} - {{gender[gender.length-1].term}}</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="newChart"> {{ newChart }}</canvas>
+                            <h3 class="card-title">สรุป {{gender[0].term}} - {{gender[gender.length-1].term}}</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" (click)="openEdit()" *ngIf="isAdmin">
+                                    <ion-icon name="pencil-sharp" style="color: white;font-size: 18px;"></ion-icon>
+                                </button>
                             </div>
                         </div>
+                        <div class="card-body" [formGroup]="genderForm">
+                            <span [innerHTML]="genderAnalysis.text"></span>
+                                <h3 *ngIf="edit">แก้ไข</h3>
+                                <div [ngxSummernote]="config" formControlName='text' *ngIf="edit" ></div>
+                                <button type="button" class="btn btn-primary" [disabled]="text.invalid" (click)="editAnalysis()" *ngIf="edit" >submit</button>
+                        </div>
                         <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div style="text-align: end;">writted by {{writter.firstName}} {{writter.lastName}}</div>
+                        </div>
                     </div>
                     <!-- /.card -->
                 </div>
+                <!-- /.anlysis -->
             </div>
+
+            
         </div>
      </section>
 

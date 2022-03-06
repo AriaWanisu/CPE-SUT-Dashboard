@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { NgChartsModule } from 'ng2-charts';
 import { NgxSummernoteModule } from 'ngx-summernote';
+import { NgxSelectModule } from 'ngx-select-ex';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +36,14 @@ import { GenderDataComponent } from './components/gender-data/gender-data.compon
 import { GraduatedDataComponent } from './components/graduated-data/graduated-data.component';
 import { WorkDataComponent } from './components/work-data/work-data.component';
 import { ScoreDataComponent } from './components/score-data/score-data.component';
+import { GpaComponent } from './components/gpa/gpa.component';
+import { SubjectsDataComponent } from './components/subjects-data/subjects-data.component';
+import { StudentTableComponent } from './components/student-table/student-table.component';
+import { GenderTableComponent } from './components/gender-table/gender-table.component';
+import { WorkTableComponent } from './components/work-table/work-table.component';
+import { GraduatedTableComponent } from './components/graduated-table/graduated-table.component';
+import { SubjectTableComponent } from './components/subject-table/subject-table.component';
+import { ScoreTableComponent } from './components/score-table/score-table.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +73,14 @@ import { ScoreDataComponent } from './components/score-data/score-data.component
     GraduatedDataComponent,
     WorkDataComponent,
     ScoreDataComponent,
+    GpaComponent,
+    SubjectsDataComponent,
+    StudentTableComponent,
+    GenderTableComponent,
+    WorkTableComponent,
+    GraduatedTableComponent,
+    SubjectTableComponent,
+    ScoreTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +91,8 @@ import { ScoreDataComponent } from './components/score-data/score-data.component
     FormsModule,
     NgChartsModule,
     IonicModule.forRoot(),
-    NgxSummernoteModule
+    NgxSummernoteModule,
+    NgxSelectModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent],

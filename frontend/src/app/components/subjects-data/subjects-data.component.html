@@ -1,0 +1,387 @@
+<div class="content-wrapper" style="font-family: 'Prompt';">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>ข้อมูลรายวิชา</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                <li class="breadcrumb-item active">Subject</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- ./ header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">เลือกรายวิชา</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row"> 
+                                    <div class="col-md-9">
+                                        <form [formGroup]='targetSubject'>
+                                        <ngx-select (change)="selectSubject($event)" (select)="selectSubject($event)" placeholder="เลือกรายวิชา" formControlName="subject" [items]="subjectList" [(ngModel)]="subjectList._id">
+                                            <!-- <option selected>เลือกวิชา</option>
+                                            <option *ngFor = "let subject of subjectList; index as i" value="{{subject}}">{{subject}}</option> -->
+                                        </ngx-select>
+                                    </form>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button (click)="exportAllAsXLSX()" class="btn btn-secondary">download ข้อมูลรายวิชาทั้งหมด</button>
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- ./input -->
+
+            <!-- ส่วนตารางข้อมูล -->
+            <div class="row" *ngIf="table">
+                <div class="col-md-12">
+                    <div class="card card-success">
+                        <div class="card-body">
+                            <button (click)="exportAsXLSX()" class="btn btn-secondary">Excel</button>
+                            <table class="table table-striped table-inverse">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>ปีการศึกษา</th>
+                                            <th>เทอม</th>
+                                            <th>รายวิชา</th>
+                                            <th>A</th>
+                                            <th>B+</th>
+                                            <th>B</th>
+                                            <th>C+</th>
+                                            <th>C</th>
+                                            <th>D+</th>
+                                            <th>D</th>
+                                            <th>F</th>
+                                            <th>P</th>
+                                            <th>S</th>
+                                            <th>U</th>
+                                            <th>รวม</th>
+                                            <th>GPA เฉลี่ย</th>
+                                            <th>STDEV</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of subjectTable; index as i">
+                                            <td scope="row">{{item.year}}</td>
+                                            <td>{{item.term}}</td>
+                                            <td>{{item.subject}}</td>
+                                            <td>{{item.a}}</td>
+                                            <td>{{item.b_plus}}</td>
+                                            <td>{{item.b}}</td>
+                                            <td>{{item.c_plus}}</td>
+                                            <td>{{item.c}}</td>
+                                            <td>{{item.d_plus}}</td>
+                                            <td>{{item.d}}</td>
+                                            <td>{{item.f}}</td>
+                                            <td>{{item.p}}</td>
+                                            <td>{{item.s}}</td>
+                                            <td>{{item.u}}</td>
+                                            <td>{{item.total}}</td>
+                                            <td>{{item.avg_gpa}}</td>
+                                            <td>{{item.stdev}}</td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" (click)="openEdit(item)">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                    Edit
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-danger btn-sm" (click)="deleteScore(item)">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Delete
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button (click)="openAdd()" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.table -->
+            
+            </div>
+
+            
+            <!-- add -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info" *ngIf="add">
+                        <div class="card-header"><h3 class="card-title">เพิ่มข้อมูลรายวิชา</h3></div>
+                        <div class="card-body" [formGroup]="subjectForm">
+                            <div class='row'>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >ปีการศึกษา</label>
+                                        <div class="form-group">
+                                            <select class="form-control" ([ngModel])="selectedYear" formControlName='year'>
+                                                <option *ngFor="let year of years" [value]="year">{{ year }}</option> 
+                                            </select>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >เทอม</label>
+                                        <div class="form-group">
+                                            <select class="form-control" formControlName='term'>
+                                                <option *ngFor="let term of terms" [value]="term">{{ term }}</option> 
+                                            </select>
+                                        </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="exampleInputEmail1" >รายวิชา</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value={{this.subjectForm.value.subject}} disabled>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >A</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addA($event)" formControlName='a'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >B+</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addB2($event)" formControlName='b_plus'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >B</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addB($event)" formControlName='b'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >C+</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addC2($event)" formControlName='c_plus'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >C</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addC($event)" formControlName='c'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >D+</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addD2($event)" formControlName='d_plus'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >D</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addD($event)" formControlName='d'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >F</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addF($event)" formControlName='f'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >P</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addP($event)" formControlName='p'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >S</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addS($event)" formControlName='s'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >U</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addU($event)" formControlName='u'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >รวม</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" value={{subjectForm.value.total}} disabled>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >GPA เฉลี่ย</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addAvg($event)" formControlName='avg_gpa'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >STDEV</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addSTDEV($event)" formControlName='stdev'>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button (click)="addSubject()" class="btn btn-primary"  [disabled]="subjectForm.invalid || warningA || warningB2 || warningB || warningC2 || warningC || warningD2 || warningD || warningF || warningS || warningP || warningU || warningAVG || warningSTDEV">Submit</button>
+                            <span *ngIf=" warningA || warningB2 || warningB || warningC2 || warningC || warningD2 || warningD || warningF || warningS || warningP || warningU || warningAVG || warningSTDEV" style="margin-left: 2rem;color: red;">*เป็นลบไม่ได้</span>
+                        </div>
+                        <!-- /.card-footer -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.add -->
+
+            <!-- edit -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info" *ngIf="edit">
+                        <div class="card-header"><h3 class="card-title">แก้ไขข้อมูลรายวิชา</h3></div>
+                        <div class="card-body" [formGroup]="subjectForm">
+                            <div class='row'>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >ปีการศึกษา</label>
+                                        <div class="form-group">
+                                            <select class="form-control" ([ngModel])="selectedYear" formControlName='year'>
+                                                <option *ngFor="let year of years" [value]="year">{{ year }}</option> 
+                                            </select>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >เทอม</label>
+                                        <div class="form-group">
+                                            <select class="form-control" formControlName='term'>
+                                                <option *ngFor="let term of terms" [value]="term">{{ term }}</option> 
+                                            </select>
+                                        </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="exampleInputEmail1" >รายวิชา</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value={{this.subjectForm.value.subject}} disabled>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >A</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addA($event)" formControlName='a'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >B+</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addB2($event)" formControlName='b_plus'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >B</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addB($event)" formControlName='b'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >C+</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addC2($event)" formControlName='c_plus'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >C</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addC($event)" formControlName='c'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >D+</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addD2($event)" formControlName='d_plus'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >D</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addD($event)" formControlName='d'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >F</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addF($event)" formControlName='f'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >P</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addP($event)" formControlName='p'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >S</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addS($event)" formControlName='s'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >U</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addU($event)" formControlName='u'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >รวม</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" value={{subjectForm.value.total}} disabled>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >GPA เฉลี่ย</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addAvg($event)" formControlName='avg_gpa'>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1" >STDEV</label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" (change)="addSTDEV($event)" formControlName='stdev'>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button (click)="updateSubject()" class="btn btn-primary"  [disabled]="subjectForm.invalid || warningA || warningB2 || warningB || warningC2 || warningC || warningD2 || warningD || warningF || warningS || warningP || warningU || warningAVG || warningSTDEV">Submit</button>
+                            <span *ngIf=" warningA || warningB2 || warningB || warningC2 || warningC || warningD2 || warningD || warningF || warningS || warningP || warningU || warningAVG || warningSTDEV" style="margin-left: 2rem;color: red;">*เป็นลบไม่ได้</span>
+                        </div>
+                        <!-- /.card-footer -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.edit -->
+
+        </div>
+    </section>
+    
+</div>

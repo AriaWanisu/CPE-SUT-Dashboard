@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { LocalStorageService } from 'angular-web-storage';
 import { ExcelService } from 'src/app/services/excel.service'
 
-
 @Component({
   selector: 'app-gender-data',
   templateUrl: './gender-data.component.html',

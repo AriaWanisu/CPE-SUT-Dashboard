@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from 'src/app/services/student.service'; 
-import { AnalysisService } from 'src/app/services/analysis.service';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { LocalStorageService } from 'angular-web-storage';
 import { ExcelService } from 'src/app/services/excel.service'
-import { PdfService } from 'src/app/services/pdf.service'
 
 declare var $:any;
 
@@ -46,7 +44,7 @@ export class StudentDataComponent implements OnInit {
   });
 
 
-  constructor(private studentService: StudentService,public local: LocalStorageService, private excelService:ExcelService, private PdfService:PdfService) { }
+  constructor(private studentService: StudentService,public local: LocalStorageService, private excelService:ExcelService) { }
 
   ngOnInit(): void {
     this.token = this.local.get('user').token;

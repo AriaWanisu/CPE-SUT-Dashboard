@@ -137,14 +137,14 @@
 
              <!-- chart 3 จำนวนนักศึกษาในแต่ละชั้นปี-->
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">จำนวนนักศึกษาในแต่ละชั้นปี</h3>
+                            <h3 class="card-title">จำนวนนักศึกษาในแต่ละชั้นปีหลักสูตร 2560</h3>
                         </div>
                         <div class="card-body">
                             <div class="chart">
-                                <canvas id="yearChart">{{ yearChart }}</canvas>
+                                <canvas id="new">{{ newChart }}</canvas>
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -152,7 +152,23 @@
                     <!-- /.card -->
                 </div>
 
-                <div class="col-md-4">
+                <!-- chart 3 จำนวนนักศึกษาในแต่ละชั้นปี-->
+                <div class="col-md-6">
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">จำนวนนักศึกษาในแต่ละชั้นปีหลักสูตร 2554</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="old">{{ oldChart }}</canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+
+                <div class="col-md-12">
                     <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title">สรุป</h3>

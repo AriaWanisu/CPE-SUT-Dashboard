@@ -72,10 +72,9 @@ export class ScoreComponent implements OnInit {
       height: '200px',
       toolbar: [
           ['misc', ['codeview', 'undo', 'redo']],
-          ['style', ['bold', 'italic', 'underline', 'clear']],
           ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
           ['para', ['style', 'ul', 'ol']],
-          ['insert', ['table', 'hr']]
+          ['insert', ['table', 'hr','picture']]
       ],
     }
 
@@ -137,15 +136,18 @@ export class ScoreComponent implements OnInit {
             datasets: [
               {
                 label: 'ผลการประเมิณเฉลี่ยสาขาวิศวกรรมคอมพิวเตอร์',
-                data: avgCom
+                data: avgCom,
+                fill: true,
               },
               {
                 label: 'ผลการประเมิณเฉลี่ยสำนักวิชาวิศวกรรมศาสตร์',
-                data: avgEng
+                data: avgEng,
+                fill: true,
               },
               {
                 label: 'ผลการประเมิณเฉลี่ยมหาวิทยาลัย',
-                data: avgUni
+                data: avgUni,
+                fill: true,
               }
             ]
           }

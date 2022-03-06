@@ -5,6 +5,7 @@ import { Chart } from 'chart.js';
 import { AnalysisService } from 'src/app/services/analysis.service';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-student',
@@ -36,6 +37,11 @@ export class StudentComponent implements OnInit {
   analysis1: any;
   analysis2: any;
 
+  oldChart: any;
+  newChart: any;
+
+  ex: any;
+
   token: any;
 
   Analysis1Form = new FormGroup({
@@ -48,7 +54,7 @@ export class StudentComponent implements OnInit {
     editor: new FormControl('',[Validators.required]),
   });
 
-  constructor(private studentService: StudentService,public local: LocalStorageService,private as: AnalysisService,private us: UserService) { }
+  constructor(private sanitizer: DomSanitizer, private studentService: StudentService,public local: LocalStorageService,private as: AnalysisService,private us: UserService) { }
 
   ngOnInit(): void {
     this.token = this.local.get('user').token;
@@ -76,7 +82,6 @@ export class StudentComponent implements OnInit {
             console.log("can't get writter");
           }
         );  
-        console.log(this.writer);
       }
     );
 
@@ -91,9 +96,10 @@ export class StudentComponent implements OnInit {
             console.log("can't get writter");
           }
         );  
-        console.log(this.writer);
+        
       }
     );
+
 
     this.config = {
       placeholder: '',
@@ -101,10 +107,9 @@ export class StudentComponent implements OnInit {
       height: '200px',
       toolbar: [
           ['misc', ['codeview', 'undo', 'redo']],
-          ['style', ['bold', 'italic', 'underline', 'clear']],
           ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
           ['para', ['style', 'ul', 'ol']],
-          ['insert', ['table', 'hr']]
+          ['insert', ['table', 'hr','picture']]
       ],
     }
 
@@ -146,6 +151,16 @@ export class StudentComponent implements OnInit {
         let allyear3 = [];
         let allyear4 = [];
         let allyear5 = [];
+        let oldyear1 = [];
+        let oldyear2 = [];
+        let oldyear3 = [];
+        let oldyear4 = [];
+        let oldyear5 = [];
+        let newyear1 = [];
+        let newyear2 = [];
+        let newyear3 = [];
+        let newyear4 = [];
+        let newyear5 = [];
         
         for(var i = 0; i < this.students.length; i++){
           if(term[i-1] == term[i]){
@@ -159,14 +174,85 @@ export class StudentComponent implements OnInit {
           }
           if(this.students[i].course == "วิศวกรรมคอมพิวเตอร์-2554"){
             total1.push(total[i]);
+            oldyear1.push(year1[i]);
+            oldyear2.push(year2[i]);
+            oldyear3.push(year3[i]);
+            oldyear4.push(year4[i]);
+            oldyear5.push(year5up[i]);
           }
           else if(this.students[i].course == "วิศวกรรมคอมพิวเตอร์-2560"){
             total2.push(total[i]);
+            newyear1.push(year1[i]);
+            newyear2.push(year2[i]);
+            newyear3.push(year3[i]);
+            newyear4.push(year4[i]);
+            newyear5.push(year5up[i]);
           }
         }
 
         this.total = allTotal[allTotal.length-1]
         this.thisyear = year[year.length-1]
+
+        this.oldChart = new Chart('old', {
+          type: 'bar',
+          data: {
+            labels: year,
+            datasets: [
+              {
+                label: 'ปี 1',
+                data: oldyear1,
+              },
+              {
+                label: 'ปี 2',
+                data: oldyear2,
+              },
+              {
+                label: 'ปี 3',
+                data: oldyear3,
+              },
+              {
+                label: 'ปี 4',
+                data: oldyear4,
+                backgroundColor: 'rgba(130, 25, 192, 0.5)',
+              },
+              {
+                label: 'ปี 5 ขึ้นไ',
+                data: oldyear5,
+              }
+            ]
+          },
+          
+        })
+
+        this.newChart = new Chart('new', {
+          type: 'bar',
+          data: {
+            labels: year,
+            datasets: [
+              {
+                label: 'ปี 1',
+                data: newyear1
+              },
+              {
+                label: 'ปี 2',
+                data: newyear2
+              },
+              {
+                label: 'ปี 3',
+                data: newyear3
+              },
+              {
+                label: 'ปี 4',
+                data: newyear4,
+                backgroundColor: 'rgba(130, 25, 192, 0.5)',
+              },
+              {
+                label: 'ปี 5 ขึ้นไป',
+                data: newyear5
+              },
+            ]
+          }
+        })
 
         this.studentAmount = new Chart("amount", {
           type: "line",
@@ -222,35 +308,7 @@ export class StudentComponent implements OnInit {
           }
         });
       
-        this.yearChart = new Chart("yearChart", {
-          type: "bar",
-          data: {
-            labels: year,
-            datasets: [
-              {
-                label: "ชั้นปีที่ 1",
-                data: allyear1
-              },
-              {
-                label: "ชั้นปีที่ 2",
-                data: allyear2
-              },
-              {
-                label: "ชั้นปีที่ 3",
-                data: allyear3
-              },
-              {
-                label: "ชั้นปีที่ 4",
-                data: allyear4
-              },
-              {
-                label: "ชั้นปีที่ 5 เป็นต้นไป",
-                data: allyear5
-              },
-            ]
-          }
-        })
-
+      
       },
       (err) => {
         console.log("can't get students");

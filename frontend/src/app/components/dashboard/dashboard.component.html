@@ -30,7 +30,7 @@
                             <h3>{{thisyear}}</h3>
                             <p>ปีการศึกษา</p>
                             </div>
-                        <a href="student/gender" class="small-box-footer">
+                        <a href="student/general" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -81,6 +81,96 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                
+                 <!-- CHART 1-->
+                <div class="col-md-7">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">กราฟแสดงจำนวนนักศึกษาแยกตามชั้นปี</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="studentChart"> {{ studentChart }}</canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <a href="student/general" class="small-box-footer">
+                                More info <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                    <div class="info-box-content">
+                        <!-- Info Boxes Style 2 -->
+                        <div class="info-box mb-3 bg-info">
+                        <span class="info-box-icon"><i class="fa fa-desktop"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">เปอร์เซ็นการได้งานตรงสาย</span>
+                            <span class="info-box-number">{{relavence}} %</span>
+                        </div>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                </div>
+            <!-- CHART 1-->
+
+                <div class="col-md-5">
+                    <div class="info-box-content">
+                        <!-- Info Boxes Style 2 -->
+                        <div class="info-box mb-3 bg-warning">
+                        <span class="info-box-icon"><i class="fa fa-laptop"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">ผลประเมินการสอน สาขาวิศวกรรมคอมพิวเตอร์</span>
+                            <span class="info-box-number">{{scoreCom}}</span>
+                        </div>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                      <!-- /.info-box-content -->
+                    <!-- /.info-box -->
+                    <div class="info-box mb-3 bg-success">
+                      <span class="info-box-icon"><i class="fa fa-cog"></i></span>
+        
+                      <div class="info-box-content">
+                        <span class="info-box-text">ผลประเมินการสอน สำนักวิชาวิศวกรรมศาสตร์</span>
+                        <span class="info-box-number">{{scoreEng}}</span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                    <div class="info-box mb-3 bg-danger">
+                      <span class="info-box-icon"><i class="fa fa-university"></i></span>
+        
+                      <div class="info-box-content">
+                        <span class="info-box-text">ผลประเมินการสอน มหาวิทยาลัย</span>
+                        <span class="info-box-number">{{scoreUni}}</span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">กราฟร้อยละอัตราการได้งานทำหลังสำเร็จการศึกษา</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="workChart"> {{ workChart }}</canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <a href="student/work" class="small-box-footer">
+                                More info <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+           
         </div>
         <!-- /.container-fluid -->
     </section>

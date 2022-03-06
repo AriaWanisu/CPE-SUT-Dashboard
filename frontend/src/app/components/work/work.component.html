@@ -112,7 +112,7 @@
                             <span [innerHTML]="salaryRelevanceAnalysis.text"></span>
                             <h3 *ngIf="edit">แก้ไข</h3>
                             <div [ngxSummernote]="config" formControlName='text' *ngIf="editSR" ></div>
-                            <button type="button" class="btn btn-primary" [disabled]="text2.invalid" (click)="editWorkAnalysis()" *ngIf="editSR" >submit</button>
+                            <button type="button" class="btn btn-primary" [disabled]="text2.invalid" (click)="editsalaryRelevanceAnalysis()" *ngIf="editSR" >submit</button>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">

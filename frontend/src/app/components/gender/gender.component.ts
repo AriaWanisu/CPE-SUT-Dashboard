@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from 'src/app/services/student.service';
 import { LocalStorageService } from 'angular-web-storage';
 import { Chart } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { AnalysisService } from 'src/app/services/analysis.service';
+import { UserService } from 'src/app/services/user.service';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-gender',
@@ -10,6 +14,7 @@ import { Chart } from 'chart.js';
 })
 export class GenderComponent implements OnInit {
 
+  //chart part
   gender: any;
   token: any;
   genderChart: any;
@@ -18,11 +23,70 @@ export class GenderComponent implements OnInit {
   thisFemale: any;
   oldChart: any;
   newChart: any;
+  courseChart: any;
 
-  constructor(private studentServices: StudentService,public local: LocalStorageService) { }
+  //analysis part
+  genderAnalysis: any;
+  writter: any;
+  user: any;
+
+  //check logic
+  isAdmin: boolean = false;
+  edit: boolean = false;
+
+  //sumernote
+  config: any;
+
+  genderForm = new FormGroup({
+    text: new FormControl('',[Validators.required]),
+    editor: new FormControl('',[Validators.required]),
+  });
+  
+
+  constructor(private studentServices: StudentService,public local: LocalStorageService, private analysisService: AnalysisService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.token = this.local.get('user').token;
+    //check role
+    if(this.local.get('user').result.role == "Admin"){
+      this.isAdmin = true;
+    }
+
+    this.userService.getUser().subscribe(
+      (data) => {
+        this.user = data._id;
+      },
+      (err) => {
+        console.log("can't get user");
+      }
+    )
+
+    this.analysisService.getAnalysis("gender",this.token).subscribe(
+      (res) => {
+        this.genderAnalysis = res;
+        this.userService.getUserById(res.editor).subscribe(
+          (data) => {
+            this.writter = data;
+          },
+          (err) => {
+            console.log("can't get writter");
+          }
+        );  
+      }
+    )
+
+    //summernote config
+    this.config = {
+      placeholder: '',
+      tabsize: 2,
+      height: '200px',
+      toolbar: [
+          ['misc', ['codeview', 'undo', 'redo']],
+          ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+          ['para', ['style', 'ul', 'ol']],
+          ['insert', ['table', 'hr', ,'picture']]
+      ],
+    }
 
     this.studentServices.getStudentGender(this.token).subscribe(
       (res) => {
@@ -60,47 +124,25 @@ export class GenderComponent implements OnInit {
 
         console.log(oldMale);
         
-
-        this.oldChart = new Chart('oldChart', {
-          type: 'bar',
-          data: {
-            labels: year,
-            datasets: [
-              {
-                label: 'นักศึกษาชาย',
-                data: oldMale
-            },
-            {
-                label: 'นักศึกษาหญิง',
-                data: oldFemale
-            }]
-          }
-        });
-
-        this.newChart = new Chart('newChart', {
-          type: 'bar',
-          data: {
-            labels: year,
-            datasets: [
-              {
-                label: 'นักศึกษาชาย',
-                data: newMale
-            },
-            {
-                label: 'นักศึกษาหญิง',
-                data: newFemale
-            }]
-          }
-        });
-        
         this.pieChart = new Chart('pieChart',{
-          type: 'pie',
+          type: 'doughnut',
           data: {
             labels: ["นักศึกษาชาย","นักศึกษาหญิง"],
             datasets: [{
               data: [totalM[totalM.length-1],totalF[totalF.length-1]]
             }]
-          }
+          },
+          plugins: [ChartDataLabels],
+          options: {
+            plugins: {
+              datalabels: {
+                formatter: (value, context) => {
+                  console.log(context);
+                  return  value
+                }
+              }
+            }
+          }        
         })
 
         this.genderChart = new Chart("genderChart", {
@@ -120,6 +162,46 @@ export class GenderComponent implements OnInit {
               },
             ]
           }
+        })
+
+        this.courseChart = new Chart("courseChart", {
+          type: "bar",
+          data: {
+            labels: year,
+            datasets: [
+              {
+                label: 'นักศึกษาชายหลักสูตร 2554',
+                data: oldMale,
+                stack: 'stack 0'
+              },
+              {
+                label: 'นักศึกษาหญิงหลักสูตร 2554',
+                data: oldFemale,
+                stack: 'stack 0',
+              },
+              {
+                label: "นักศึกษาชายหลักสูตร 2560",
+                data: newMale,
+                stack: 'stack 1'
+              },
+              {
+                label: 'นักศึกษาหญิงหลักสูตร 2560',
+                data: newFemale,
+                stack: 'stack 1',
+                backgroundColor: 'rgba(100, 10, 130,0.5)',
+              }
+            ]
+          },
+          plugins: [ChartDataLabels],
+          options: {
+            plugins: {
+              datalabels: {
+                formatter: (value) => {
+                  return  value
+                }
+              }
+            }
+          }        
         })
 
       }
@@ -161,5 +243,32 @@ export class GenderComponent implements OnInit {
 
       return this.thisFemale
   }
+
+  openEdit(){
+    this.edit = !this.edit
+  }
+
+  editAnalysis(){
+    this.genderForm.value.editor = this.user;
+
+    this.analysisService.editAnalysis(this.genderAnalysis.index,this.token,this.genderForm.value)
+    .subscribe( data => {
+        if(data.status == true){
+          alert(data.data.message)
+          window.location.reload();
+      }else{
+        alert('Address incorrect!');
+      }
+    },
+    err => {
+      console.log(err);
+      alert('Error!!');
+    });
+  }
+
+  get text() {
+    return this.genderAnalysis.get('text');
+  }
+
 
 }
