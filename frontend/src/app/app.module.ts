@@ -13,13 +13,10 @@ import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { SettingComponent } from './components/setting/setting.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DataService  } from './services/data.service';
-import { HomeComponent } from './components/home/home.component';
 import { GraduatedComponent } from './components/graduated/graduated.component';
 import { StudentComponent } from './components/student/student.component';
 import { WorkComponent } from './components/work/work.component';
@@ -29,7 +26,6 @@ import { ScoreComponent } from './components/score/score.component';
 import { IonicModule } from '@ionic/angular';
 import { UserComponent } from './components/user/user.component';
 import { PasswordComponent } from './components/password/password.component';
-import { AnalysisComponent } from './components/analysis/analysis.component';
 import { StudentDataComponent } from './components/student-data/student-data.component';
 import { GenderDataComponent } from './components/gender-data/gender-data.component';
 import { GraduatedDataComponent } from './components/graduated-data/graduated-data.component';
@@ -51,12 +47,9 @@ import { ScoreTableComponent } from './components/score-table/score-table.compon
     FooterComponent,
     HeaderComponent,
     MenuComponent,
-    SettingComponent,
     RegisterComponent,
     AdminLoginComponent,
     DashboardComponent,
-    NotFoundComponent,
-    HomeComponent,
     GraduatedComponent,
     StudentComponent,
     WorkComponent,
@@ -65,7 +58,6 @@ import { ScoreTableComponent } from './components/score-table/score-table.compon
     ScoreComponent,
     UserComponent,
     PasswordComponent,
-    AnalysisComponent,
     StudentDataComponent,
     GenderDataComponent,
     GraduatedDataComponent,

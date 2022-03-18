@@ -1,0 +1,109 @@
+[{
+  "_id": {
+    "$oid": "620f223ac046d77e93e085ab"
+  },
+  "year": 2556,
+  "total": 97,
+  "answer": 70,
+  "percentAnswer": 72.16,
+  "getWork": 57,
+  "percentGetWork": 86.36,
+  "study": 4,
+  "pecrentStudy": 5.17,
+  "notWork": 9,
+  "percentNotWork": 12.86,
+  "workEarly": 0,
+  "percentWorkEarly": 0,
+  "avgSalary": 18670.27,
+  "relevance": 90.91
+},{
+  "_id": {
+    "$oid": "620f223ac046d77e93e085ac"
+  },
+  "year": 2557,
+  "total": 73,
+  "answer": 61,
+  "percentAnswer": 83.56,
+  "getWork": 52,
+  "percentGetWork": 92.86,
+  "study": 5,
+  "pecrentStudy": 8.2,
+  "notWork": 4,
+  "percentNotWork": 6.56,
+  "workEarly": 29,
+  "percentWorkEarly": 59.18,
+  "avgSalary": 19066.33,
+  "relevance": 94.12
+},{
+  "_id": {
+    "$oid": "620f223ac046d77e93e085ad"
+  },
+  "year": 2558,
+  "total": 75,
+  "answer": 62,
+  "percentAnswer": 82.67,
+  "getWork": 51,
+  "percentGetWork": 86.44,
+  "study": 3,
+  "pecrentStudy": 4.84,
+  "notWork": 8,
+  "percentNotWork": 12.9,
+  "workEarly": 24,
+  "percentWorkEarly": 47.06,
+  "avgSalary": 18861.7,
+  "relevance": 91.49
+},{
+  "_id": {
+    "$oid": "620f223ac046d77e93e085ae"
+  },
+  "year": 2559,
+  "total": 96,
+  "answer": 77,
+  "percentAnswer": 80.21,
+  "getWork": 73,
+  "percentGetWork": 97.33,
+  "study": 2,
+  "pecrentStudy": 2.6,
+  "notWork": 2,
+  "percentNotWork": 2.6,
+  "workEarly": 30,
+  "percentWorkEarly": 50,
+  "avgSalary": 19006.56,
+  "relevance": 88.33
+},{
+  "_id": {
+    "$oid": "620f223ac046d77e93e085af"
+  },
+  "year": 2560,
+  "total": 116,
+  "answer": 115,
+  "percentAnswer": 99.14,
+  "getWork": 95,
+  "percentGetWork": 88.79,
+  "study": 5,
+  "pecrentStudy": 4.35,
+  "notWork": 12,
+  "percentNotWork": 10.43,
+  "workEarly": 32,
+  "percentWorkEarly": 38.55,
+  "avgSalary": 20697.27,
+  "relevance": 87.37
+},{
+  "_id": {
+    "$oid": "620f223ac046d77e93e085b0"
+  },
+  "year": 2561,
+  "total": 106,
+  "answer": 103,
+  "percentAnswer": 97.17,
+  "getWork": 83,
+  "percentGetWork": 80.58,
+  "study": 3,
+  "pecrentStudy": 2.91,
+  "notWork": 17,
+  "percentNotWork": 16.5,
+  "workEarly": 31,
+  "percentWorkEarly": 41.89,
+  "avgSalary": 21578.26,
+  "relevance": 93.51
+}]

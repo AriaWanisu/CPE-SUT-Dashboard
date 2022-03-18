@@ -33,8 +33,6 @@
                                     <div class="col-md-9">
                                         <form [formGroup]='targetSubject'>
                                         <ngx-select (change)="selectSubject($event)" (select)="selectSubject($event)" placeholder="เลือกรายวิชา" formControlName="subject" [items]="subjectList" [(ngModel)]="subjectList._id">
-                                            <!-- <option selected>เลือกวิชา</option>
-                                            <option *ngFor = "let subject of subjectList; index as i" value="{{subject}}">{{subject}}</option> -->
                                         </ngx-select>
                                     </form>
                                     </div>

@@ -1,0 +1,73 @@
+[{
+  "_id": {
+    "$oid": "6204b8e5cb387996463cb64a"
+  },
+  "year": "B52",
+  "early": 58.51,
+  "normal": 17.02,
+  "over": 18.09,
+  "other": 6.38
+},{
+  "_id": {
+    "$oid": "6204b8e5cb387996463cb64b"
+  },
+  "year": "B53",
+  "early": 61.29,
+  "normal": 22.58,
+  "over": 10.75,
+  "other": 5.38
+},{
+  "_id": {
+    "$oid": "6204b8e5cb387996463cb64c"
+  },
+  "year": "B54",
+  "early": 62.5,
+  "normal": 23.61,
+  "over": 8.33,
+  "other": 5.56
+},{
+  "_id": {
+    "$oid": "6204b8e5cb387996463cb64d"
+  },
+  "year": "B55",
+  "early": 47.37,
+  "normal": 20,
+  "over": 17.88,
+  "other": 14.74
+},{
+  "_id": {
+    "$oid": "6204b8e5cb387996463cb64e"
+  },
+  "year": "B56",
+  "early": 39.49,
+  "normal": 29.41,
+  "over": 26.04,
+  "other": 5.04
+},{
+  "_id": {
+    "$oid": "6204b8e5cb387996463cb64f"
+  },
+  "year": "B57",
+  "early": 36.36,
+  "normal": 29.54,
+  "over": 22.72,
+  "other": 11.36
+},{
+  "_id": {
+    "$oid": "6204b8e5cb387996463cb650"
+  },
+  "year": "B58",
+  "early": 30.13,
+  "normal": 22.43,
+  "over": 36.54,
+  "other": 10.9
+},{
+  "_id": {
+    "$oid": "6204b8e5cb387996463cb651"
+  },
+  "year": "B59",
+  "early": 53.63,
+  "normal": 46.36,
+  "over": 0,
+  "other": 0
+}]

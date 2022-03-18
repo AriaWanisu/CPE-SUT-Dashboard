@@ -1,0 +1,435 @@
+[{
+  "_id": {
+    "$oid": "6216699ec75653b487d83c11"
+  },
+  "index": "student1",
+  "text": "<p style=\"color: rgb(33, 37, 41); font-family: Prompt;\">จากกราฟแรกจะเห็นได้ว่า ช่วงปี 2562 - 2563&nbsp;จำนวนนักศึกษาในสาขาวิศวกรรมคอมพิวเตอร์มีจำนวนลดลง</p><p style=\"color: rgb(33, 37, 41); font-family: Prompt;\">และเมื่อนำมาประกอบกับกราฟจำนวนนักศึกษาแยกตามหลักสูตร จึงทำให้เห็นว่า</p><ol style=\"color: rgb(33, 37, 41); font-family: Prompt;\"><li>ในช่วงปี 2562 - 2563 นักศึกษาหลักสูตรวิศวกรรมคอมพิวเตอร์ 2554 เริ่มจบการศึกษาจนเกือบหมด&nbsp;</li><li><b>มีนำศึกษาหลักสูตร 2554 </b>ตกค้างอยู่ตั้งแต่ปี 2553 จำนวน 16 คน</li></ol>",
+  "editor": "61ff97fa41b82053ef0ea838",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62173296320da43c3b27e02f"
+  },
+  "index": "student2",
+  "text": "<ul style=\"color: rgb(33, 37, 41); font-family: Prompt;\"><li>จำนวนนักศึกษาปีหนึ่ง ของทั้งสองหลักสูตร มีจำนวนน้อย เนื่องจากปีแรก นักศึกษาส่วนใหญ่ในสำนักวิศวกรรมศาสตร์ จะยังไม่ได้สาขากัน</li><li><b>ในส่วนของปีที่ 2</b>&nbsp;ซึ่งเริ่มแยกสาขา ซึ่งตั้งแต่ปี 2562 เป็นต้นมา ทางสาขาได้ปรับจำนวนนักศึกษาที่รับเข้ามาเป็น<b>ปีละ 90 คน </b>ทำให้จำนวนนักศึกษาโดยรวมของสาขาลดลงในกราฟด้านบน</li><li><b>ในส่วนของชั้นปีที่ 3&nbsp;</b>นักศึกษาจะน้อยกว่าชั้นปีที่ 2 ของปีก่อนๆ ซึ่งหมายความว่ามีนักศึกษาที่ออกจากสาขา ตกประมาณปีละ 2 คน</li><li><b>ในส่วนชั้นปีที่ 4</b>&nbsp;จะเห็นว่านักศึกษาลดลงจากชั้นปีที่ 3 ค่อนข้างมาก เนื่องจากเป็นข้อมูล ณ ภาคการศึกษาที่&nbsp;3 ซึ่ง ซึ่งสาขาวิศวกรรมคอมพิวเตอร์สามารถสำเร็จการศึกษาก่อน 4 ปีได้ ทำให้เห็นว่านักศึกษาในสาขาส่วนใหญ่ สามารถจบการศึกษาได้ก่อน 4 ปี</li><li>ยกเว้นในกรณีของปี 2564 เพราะเป็นข้อมูล ณ ภาคการศึกษาที่ 2</li><li>ในปี 2563 เป็นต้นมา ซึ่งไม่มีนักศึกษาหลักสูตร 2554 ทั้งหมดศึกษาเกิน 4 ปีทั้งหมดแล้ว แต่ยังมีนักศึกษาตกค้างอยู่ 16 คน</li></ul>",
+  "editor": "61ff97fa41b82053ef0ea838",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621b77e37055070c6048ff6c"
+  },
+  "index": "score",
+  "text": "ผลการประเมินการสอนของทั้งสามหน่วยงานมีแนวโน้มเพิ่มขึ้นไปในทางเดียวกัน ผลการประเมินของสาขาวิศวกรรมคอมพิวเตอร์เองก็สามารถรักษาระดับให้สูงกว่า 4.00 ได้ตลอดและมีแนวโน้มค่อยๆสูงขึ้นช้าๆ",
+  "editor": "61ff97fa41b82053ef0ea838",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621c7935ca7e5c994fa4a4a8"
+  },
+  "index": "workAnalysis",
+  "text": "<span style=\"color: rgb(33, 37, 41); font-family: Prompt;\">จากกราฟ จะเห็นได้ว่าในช่วงปี 2559 - 2561 อัตราการได้งานทำลดลง และอัตราการศึกษาต่อไม่ได้โตขึ้น แต่ยังคงสามารถรักษาระดับการได้งานทำให้ไม่ต่ำกว่าร้อยละ 80 ได้&nbsp;&nbsp;</span>",
+  "editor": "61ff97fa41b82053ef0ea838",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621c7c15ca7e5c994fa4a4f8"
+  },
+  "index": "salaryAndrelevance",
+  "text": "<p style=\"color: rgb(33, 37, 41); font-family: Prompt;\">จากกราฟ เงินเดือนเฉลี่ยของนักศึกษาจบใหม่ สาขาวิศวกรรมคอมพิวเตอร์มีแนวโน้มเพิ่มสูงขึ้นในทุกๆปี และเมื่อนำมาประกอบกับกราฟอัตราเงินเฟ้อ</p><p style=\"color: rgb(33, 37, 41); font-family: Prompt;\"><img src=\"https://d3fy651gv2fhd3.cloudfront.net/charts/embed.png?s=thacorecpirate&amp;v=202203040346V20200908&amp;d1=20120307&amp;h=300&amp;w=600\"></p><ul style=\"color: rgb(33, 37, 41); font-family: Prompt;\"><li>กราฟจาก&nbsp;<a href=\"https://tradingeconomics.com/thailand/core-inflation-rate\" target=\"_blank\" style=\"color: rgb(0, 123, 255); text-decoration: none;\">https://tradingeconomics.com/thailand/core-inflation-rate</a><a href=\"https://tradingeconomics.com/thailand/core-inflation-rate\" target=\"_blank\" style=\"color: rgb(0, 123, 255); text-decoration: none;\"></a></li></ul><p style=\"color: rgb(33, 37, 41); font-family: Prompt;\">จะเห็นได้ว่าในช่วงปี 2559 อัตราเงินเฟ้อในประเทศลดต่ำลงและค่อนข้างคงตัว แสดงให้เห็นว่าที่เงินเดือนเฉลี่ยเพิ่มขึ้น <b>ไม่ได้เกิดจากผลกระทบจากภาวะเงินเฟ้อ</b> แต่เพิ่มขึ้นเนื่องจากความต้องการของตลาดแรงงานจริงๆ</p><p style=\"color: rgb(33, 37, 41); font-family: Prompt;\">และในส่วนของการได้งานทำตรงสาย <b>ค่อนข้างสูงมากถึงร้อยละ 90</b> ในแทบทุกปี เป็นตัวช่วยยืนยันว่าวิชาชีพในสายคอมพิวเตอร์เป็นที่ต้องการในตลาดแรงงานจริงๆ</p>",
+  "editor": "61ff97fa41b82053ef0ea838",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621d1077ca7e5c994fa4a673"
+  },
+  "index": "graduated",
+  "text": "<p style=\"color: rgb(33, 37, 41); font-family: Prompt;\"><font color=\"#212529\" face=\"Prompt\">รหัส B52 - B57 มีนักศึกษาที่สามารถสำเร็จการศึกษาก่อน 4 ปี ในอัตราส่วนมากที่สุด และสำเร็จการศึกษาภายใน 4 ปีลองลงมา ซึ่งมีอัตราเฉลี่ยเกิน 75% ของนักศึกษาทั้งหมด แต่พอถึงรหัส B58 กลับมีอัตราการสำเร็จการศึกษาเกิน 4 ปีพุ่งสูงขึ้นจนนำกลุ่มที่สำเร็จการศึกษาภายใน 4 ปี และ ก่อน 4 ปีไป</font></p><p style=\"color: rgb(33, 37, 41); font-family: Prompt;\"><font color=\"#212529\" face=\"Prompt\">และพอมาถึงรุ่น B59 ซึ่งจะสำเร็จการศึกษาในปี พ.ศ 2563 ที่เผอิญไป</font>ตรงกับเหตุการณ์การแพร่ระบาดของโรคติดเชื้อไวรัสโคโรนา 2019 (covid-19) ในไทยอย่างหนัก ทำให้ได้รับข้อมูลมาแค่ในส่วนของนักศึกษาที่สำเร็จการศึกษาก่อน 4 ปี และภายใน 4 ปี เท่านั้น จึงไม่สามารถทราบได้อย่างแน่ชัดว่า อัตราส่วนนักศึกษาที่จบการศึกษาเกิน 4 ปี มีแนวโน้มเพิ่มสูงขึ้นหรือไม่ แต่จากกราฟตั้งแต่ช่วงรหัส B54 เป็นต้นไป ก็ค่อนข้างแสดงให้เห็นว่าอัตราส่วนของนักศึกษาที่สำเร็จการศึกษาเกิน 4&nbsp;ปี มีแนวโน้มเพิ่มสูงขึ้นขริงๆ ซึ่งแนวโน้มนี้เริ่มเกิดขึ้นในตอนที่เปลี่ยนมาใช้หลักสูตร 2554&nbsp;</p>",
+  "editor": "61ff97fa41b82053ef0ea838",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed88"
+  },
+  "index": "523101 : COMPUTER PROGRAMMING I",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed89"
+  },
+  "index": "523102 : COMPUTER PROGRAMMING",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed8a"
+  },
+  "index": "523201 : COMPUTER PROGRAMMING II",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed8b"
+  },
+  "index": "523232 : OBJECT-ORIENTED TECHNOLOGY",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed8c"
+  },
+  "index": "523271 : ELECTRONICS FOR COMPUTER ENGINEERING\"",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed8d"
+  },
+  "index": "523275 : COMPUTER MATHEMATICS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed8e"
+  },
+  "index": "523301 : COMPUTER STATISTICS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed8f"
+  },
+  "index": "523312 : KNOWLEDGE DISCOVERY AND DATA MINING",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed90"
+  },
+  "index": "523313 : WEB APPLICATIONS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed91"
+  },
+  "index": "523331 : SYSTEM ANALYSIS AND DESIGN",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed92"
+  },
+  "index": "523351 : FORMAL METHODS AND COMPUTABILITY",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed93"
+  },
+  "index": "523353 : COMPUTER NETWORKS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed94"
+  },
+  "index": "523371 : MICROPROCESSORS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed95"
+  },
+  "index": "523414 : ARTIFICIAL NEURAL NETWORKS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed96"
+  },
+  "index": "523455 : COMPUTER SECURITY",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed97"
+  },
+  "index": "523456 : OPEN SOURCE DEVELOPMENT",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed98"
+  },
+  "index": "523472 : NUMERICAL ANALYSIS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed99"
+  },
+  "index": "523490 : PRE-COOPERATIVE EDUCATION",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed9a"
+  },
+  "index": "523491 : COOPERATIVE EDUCATION I",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed9b"
+  },
+  "index": "523494 : COMPUTER ENGINEERING STUDY PROJECT",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed9c"
+  },
+  "index": "523495 : COMPUTER ENGINEERING PROJECT I",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed9d"
+  },
+  "index": "523496 : COMPUTER ENGINEERING PROJECT II",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed9e"
+  },
+  "index": "523497 : ADVANCED TOPICS IN COMPUTER ENGINEERING I",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eed9f"
+  },
+  "index": "523499 : INTRODUCTION TO RESEARCH METHODS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eeda0"
+  },
+  "index": "523231 : DATA STRUCTURES AND ALGORITHMS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eeda1"
+  },
+  "index": "523272 : ELECTRONIC LABORATORY FOR COMPUTER ENGINEERING",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eeda2"
+  },
+  "index": "523273 : DIGITAL SYSTEM DESIGN",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eeda3"
+  },
+  "index": "523274 : DIGITAL SYSTEM LABORATORY",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eeda4"
+  },
+  "index": "523332 : SOFTWARE ENGINEERING",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eeda5"
+  },
+  "index": "523352 : COMPUTER AND COMMUNICATION",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eeda6"
+  },
+  "index": "523354 : OPERATING SYSTEMS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eeda7"
+  },
+  "index": "523411 : ARTIFICIAL INTELLIGENCE IN APPLICATIONS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eeda8"
+  },
+  "index": "523415 : SEMANTIC WEB",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eeda9"
+  },
+  "index": "523416 : COMPUTER AND DATA ANALYSIS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedaa"
+  },
+  "index": "523492 : COOPERATIVE EDUCATION II",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedab"
+  },
+  "index": "523211 : DATABASE SYSTEMS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedac"
+  },
+  "index": "523251 : PROGRAMMING FUNDAMENTALS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedad"
+  },
+  "index": "523276 : COMPUTER ARCHITECTURE AND ORGANIZATION",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedae"
+  },
+  "index": "523314 : INTRODUCTION TO NATURAL LANGUAGE PROCESSING",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedaf"
+  },
+  "index": "523372 : EMBEDDED SYSTEMS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedb0"
+  },
+  "index": "523412 : EXPERT SYSTEMS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedb1"
+  },
+  "index": "523435 : SOFTWARE PROCESS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedb2"
+  },
+  "index": "523451 : COMPUTER GRAPHICS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedb3"
+  },
+  "index": "523203 : PROBLEM SOLVING WITH PROGRAMMING",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedb4"
+  },
+  "index": "523202 : COMPUTER PROGRAMMING FOR ENGINEERS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedb5"
+  },
+  "index": "523315 : MACHINE LEARNING FUNDAMENTALS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedb6"
+  },
+  "index": "523374 : SERVERLESS AND CLOUD ARCHITECTURES",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedb7"
+  },
+  "index": "523355 : INTRODUCTION TO BLOCKCHAIN TECHNOLOGY",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedb8"
+  },
+  "index": "523441 : CYBER SECURITY FUNDAMENTALS",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedb9"
+  },
+  "index": "523480 : COMPUTER ENGINEERING PROJECT",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedba"
+  },
+  "index": "523418 : DEEP LEARNING",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedbb"
+  },
+  "index": "523419 : ADVANCED WEB APPLICATION DEVELOPMENT",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedbc"
+  },
+  "index": "523452 : DIGITAL IMAGE PROCESSING",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621e6c73460bf31bca1eedbd"
+  },
+  "index": "523454 : COMPUTER NETWORK PROGRAMMING",
+  "text": "สรุปรายวิชา ",
+  "editor": "61ff97fa41b82053ef0ea838"
+},{
+  "_id": {
+    "$oid": "621f1761f682724b02081f1d"
+  },
+  "index": "gender",
+  "text": "<p><span style=\"color: rgb(33, 37, 41); font-family: Prompt;\">เนื่องจากเป็นสำนักวิชาวิศวกรรมศาสตร์ จึงเป็นเรื่องปกติที่จำนวนนักศึกษาชายจะมากกว่านักศึกษาหญิง โดยจะเห็นได้ว่าจำนวนนักศึกษาชายแทบจะมากกว่าจำนวนนักศึกษาหญิงใน&nbsp;</span><b><span style=\"color: rgb(33, 37, 41); font-family: Prompt;\">อัตรา</span><span style=\"color: rgb(33, 37, 41); font-family: Prompt;\">ส่วน</span><span style=\"color: rgb(33, 37, 41); font-family: Prompt;\">ประมาณ 2:1</span></b><span style=\"color: rgb(33, 37, 41); font-family: Prompt;\">&nbsp; ในแทบจะทุกช่วงปี</span><br></p>",
+  "editor": "61ff97fa41b82053ef0ea838",
+  "__v": 0
+}]

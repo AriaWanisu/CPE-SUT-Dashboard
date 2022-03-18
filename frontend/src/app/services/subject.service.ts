@@ -33,7 +33,6 @@ export class SubjectService {
     return this.http.get<any>(url+id,{headers}).pipe(map(data => {
       if(data){
         this.subject = data;
-        console.log(this.subject);
       }
       return this.subject
     }));
@@ -47,7 +46,6 @@ export class SubjectService {
     return this.http.put<any>(url, item, {headers}).pipe(map(data => {
       if(data){
         this.subject = data;
-        console.log(this.subject);
       }
       return this.subject
     }));
@@ -61,7 +59,6 @@ export class SubjectService {
     return this.http.put<any>(url, item, {headers}).pipe(map(data => {
       if(data){
         this.subject = data;
-        console.log(this.subject);
       }
       return this.subject
     }));
