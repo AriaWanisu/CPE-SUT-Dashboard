@@ -216,7 +216,7 @@ export class StudentComponent implements OnInit {
                 backgroundColor: 'rgba(130, 25, 192, 0.5)',
               },
               {
-                label: 'ปี 5 ขึ้นไ',
+                label: 'ปี 5 ขึ้นไป',
                 data: oldyear5,
               }
             ]

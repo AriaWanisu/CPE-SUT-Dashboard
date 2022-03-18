@@ -21,7 +21,6 @@ export class AnalysisService {
     return this.http.get<any>(url, {headers} ).pipe(map(data => {
       if(data){
         this.analysisList = data;
-        console.log(this.analysisList);
       }
       return this.analysisList
     }));
@@ -35,7 +34,6 @@ export class AnalysisService {
     return this.http.get<any>(url+index,{headers}).pipe(map(data => {
       if(data){
         this.analysis = data;
-        console.log(this.analysis);
       }
       return this.analysis
     }));

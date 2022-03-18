@@ -20,7 +20,6 @@ export class ScoreService {
     return this.http.get<any>(url, {headers} ).pipe(map(data => {
       if(data){
         this.score = data;
-        console.log(this.score);
       }
       return this.score
     }));

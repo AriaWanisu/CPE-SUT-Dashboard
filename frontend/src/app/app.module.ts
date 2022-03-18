@@ -16,7 +16,6 @@ import { MenuComponent } from './components/menu/menu.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
-import { ChartComponent } from './components/chart/chart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DataService  } from './services/data.service';
@@ -55,7 +54,6 @@ import { ScoreTableComponent } from './components/score-table/score-table.compon
     SettingComponent,
     RegisterComponent,
     AdminLoginComponent,
-    ChartComponent,
     DashboardComponent,
     NotFoundComponent,
     HomeComponent,

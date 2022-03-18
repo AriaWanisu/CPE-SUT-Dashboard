@@ -25,8 +25,6 @@ export class UserService {
     return this.http.get<any>('http://localhost:3000/api/userbyid/'+id).pipe(map(data => {
       if(data){
         this.user = data;
-        console.log(data);
-        
       }
       return this.user
     }));
@@ -40,7 +38,6 @@ export class UserService {
       .pipe(map(data => {
         if(data){
           if(data.status == true){
-            console.log(data);
           }
         }
         return data;
@@ -55,7 +52,6 @@ export class UserService {
      .pipe(map(data => {
        if(data){
          if(data.status == true){
-          console.log(data);
          }
        }
        return data;

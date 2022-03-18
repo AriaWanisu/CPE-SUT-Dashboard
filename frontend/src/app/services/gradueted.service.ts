@@ -45,7 +45,6 @@ export class GraduetedService {
     return this.http.put<any>(url+id,data,{headers}).pipe(map(data => {
       if(data){
         if(data.status == true){
-          console.log(data);
         }
       }
       return data;
@@ -62,7 +61,6 @@ export class GraduetedService {
     return this.http.delete<any>(url+id, {headers})
       .pipe(map(data => {
         if(data){
-          console.log(data);
         }
       }));
   }

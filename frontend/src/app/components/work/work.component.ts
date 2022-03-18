@@ -122,8 +122,9 @@ export class WorkComponent implements OnInit {
                 label: "อัตราการได้งานทำ",
                 data: relevance,
                 borderColor: 'rgb(54, 162, 235)',
-                backgroundColor: 'rgb(54, 162, 235)',
-                pointBackgroundColor: 'rgb(54, 162, 235)'
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                fill: true
               }
             ]
           },
@@ -144,6 +145,7 @@ export class WorkComponent implements OnInit {
               {
                 label: "เงินเดือน",
                 data: salary,
+                fill: true
               }
             ]
           }

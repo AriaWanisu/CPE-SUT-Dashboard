@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>การกระจายเกรดต่างๆ</h1>
+                    <h1>GPA เฉลี่ย และข้อมูลรายวิชาต่างๆ</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                        <li class="breadcrumb-item active">Subject</li>
+                        <li class="breadcrumb-item"><a href="/dashboard">Subject</a></li>
+                        <li class="breadcrumb-item active">GPA</li>
                     </ol>
                 </div>
             </div>
@@ -78,6 +78,22 @@
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
+                    
+                    <!-- card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">กราฟเทียบจำนวนคนที่ผ่านรายวิชาและไม่ผ่านรายวิชา&nbsp;&nbsp;</h3>
+                            <h3 class="card-title" *ngIf="targetSubjectForm.value.subject"> {{targetSubjectForm.value.subject}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id='difChart'>{{ difChart }}</canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
                 </div>
                 <!-- /.chart part -->
 
@@ -119,7 +135,7 @@
                      <!-- card -->
                      <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">กราฟเทียบจำนวนคนที่ได้เกรด A และ F วิชา&nbsp;&nbsp;</h3>
+                            <h3 class="card-title">กราฟเทียบจำนวนคนที่ได้เกรด A ถึง C และ D+ ถึง F วิชา&nbsp;&nbsp;</h3>
                             <h3 class="card-title" *ngIf="targetSubjectForm.value.subject"> {{targetSubjectForm.value.subject}}</h3>
                         </div>
                         <div class="card-body">

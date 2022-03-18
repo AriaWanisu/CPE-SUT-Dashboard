@@ -19,7 +19,6 @@ export class AuthService {
         if(data){
           if(data.status == true){
             this.local.set('user', data, 1, 'w');
-            console.log(this.local.get('user'));
             this.isLoggedIn = true;
           }
         }

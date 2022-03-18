@@ -8,7 +8,7 @@ import { LocalStorageService } from 'angular-web-storage';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'CPE Dashboard';
 
   constructor( public local: LocalStorageService){}
 }
